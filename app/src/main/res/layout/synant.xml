@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="230sp">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_background1"
+            android:text="Antonyms: "
+            android:id="@+id/ant_tag"
+            android:padding="10sp"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:layout_marginTop="10sp"
+            />
+
+        <android.support.v7.widget.CardView
+            card_view:contentPadding="10sp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/ant_tag"
+            android:layout_marginTop="10sp"
+            android:layout_marginLeft="10sp"
+            android:layout_marginRight="10sp"
+            android:layout_marginBottom="10sp"
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            card_view:cardBackgroundColor="#d3d3d3">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:text="ANT 1"
+                android:id="@+id/ant1"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ANT 2"
+                android:id="@+id/ant2"
+                android:textColor="@android:color/black"
+                android:layout_marginTop="30sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ant3"
+                android:text="ANT 3"
+                android:textColor="@android:color/black"
+                android:layout_marginTop="60sp"/>
+
+
+
+        </android.support.v7.widget.CardView>
+
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="230sp"
+        android:id="@+id/lower"
+        android:layout_marginTop="225sp">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_background1"
+            android:text="Synonyms: "
+            android:padding="10sp"
+            android:id="@+id/syn_tag"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:layout_marginTop="10sp"
+            />
+
+
+        <android.support.v7.widget.CardView
+            card_view:contentPadding="10sp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/syn_tag"
+            android:layout_marginTop="10sp"
+            android:layout_marginLeft="10sp"
+            android:layout_marginRight="10sp"
+            android:layout_marginBottom="10sp"
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            card_view:cardBackgroundColor="#d3d3d3">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SYN 1"
+                android:textColor="@android:color/black"
+                android:id="@+id/syn1"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SYN 2"
+                android:textColor="@android:color/black"
+                android:id="@+id/syn2"
+                android:layout_marginTop="30sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/syn3"
+                android:text="SYN 3"
+                android:textColor="@android:color/black"
+                android:layout_marginTop="60sp"/>
+
+
+
+        </android.support.v7.widget.CardView>
+
+
+
+    </RelativeLayout>
+
+
+
+</FrameLayout>

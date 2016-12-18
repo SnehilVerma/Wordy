@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                                    android:id="@+id/card_view"
+                                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    card_view:cardBackgroundColor="#d3d3d3"
+                                    card_view:cardUseCompatPadding="true"
+                                    card_view:contentPaddingBottom="4dp"
+                                    card_view:contentPaddingTop="4dp"
+                                    card_view:cardCornerRadius="10dp"
+                                    card_view:cardElevation="5dp"
+
+
+        >
+
+    <RelativeLayout
+        android:layout_width="350sp"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:id="@+id/word_mean"
+        >
+
+       <RelativeLayout
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content">
+
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="@string/word"
+               android:textStyle="bold"
+               android:id="@+id/word"
+               android:textColor="@android:color/black"
+               android:textSize="20sp"/>
+
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_below="@+id/word"
+               android:textSize="20sp"
+               android:layout_marginTop="5dp"
+               android:id="@+id/meaning"
+               android:maxLines="3"
+               android:layout_marginRight="60sp"
+               android:textColor="@android:color/black"
+               android:text="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor."/>
+
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_below="@+id/meaning"
+               android:textSize="15sp"
+               android:id="@+id/cat"
+               android:layout_marginTop="10dp"
+               android:text="advanced"/>
+
+
+
+           <Button
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_below="@+id/cat"
+               android:layout_marginTop="15dp"
+               android:id="@+id/syn"
+               android:text="Synonyms"
+               android:backgroundTint="#ffcc00"
+               android:layout_marginLeft="30dp"
+               android:background="@android:drawable/editbox_dropdown_light_frame"/>
+
+
+           <Button
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_toRightOf="@+id/syn"
+               android:layout_below="@+id/cat"
+               android:id="@+id/ant"
+               android:text="antonyms"
+               android:backgroundTint="#ffcc00"
+               android:layout_marginTop="15dp"
+               android:background="@android:drawable/editbox_dropdown_light_frame"
+               android:layout_marginLeft="80dp"/>
+
+
+
+       </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="20dp"
+            >
+
+
+            <ImageView
+                android:id="@+id/star"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="?attr/selectableItemBackground"
+                android:src="@drawable/star" />
+
+
+
+        </RelativeLayout>
+
+
+
+
+
+
+
+
+        </RelativeLayout>
+
+
+</android.support.v7.widget.CardView>

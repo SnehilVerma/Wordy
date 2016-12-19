@@ -32,9 +32,5 @@ public class SynAnt extends AppCompatActivity {
         atv2.setText(b.getString("a2"));
         atv3.setText(b.getString("null"));
 
-
-
-
-
     }
 }

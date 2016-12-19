@@ -5,11 +5,11 @@
                                     xmlns:card_view="http://schemas.android.com/apk/res-auto"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    card_view:cardBackgroundColor="#d3d3d3"
+                                    card_view:cardBackgroundColor="#ffffff"
                                     card_view:cardUseCompatPadding="true"
                                     card_view:contentPaddingBottom="4dp"
                                     card_view:contentPaddingTop="4dp"
-                                    card_view:cardCornerRadius="10dp"
+                                    card_view:cardCornerRadius="0dp"
                                     card_view:cardElevation="5dp"
 
 
@@ -33,13 +33,13 @@
                android:textStyle="bold"
                android:id="@+id/word"
                android:textColor="@android:color/black"
-               android:textSize="20sp"/>
+               android:textSize="15sp"/>
 
            <TextView
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:layout_below="@+id/word"
-               android:textSize="20sp"
+               android:textSize="15sp"
                android:layout_marginTop="5dp"
                android:id="@+id/meaning"
                android:maxLines="3"
@@ -51,7 +51,7 @@
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:layout_below="@+id/meaning"
-               android:textSize="15sp"
+               android:textSize="12sp"
                android:id="@+id/cat"
                android:layout_marginTop="10dp"
                android:text="advanced"/>
@@ -65,6 +65,7 @@
                android:layout_marginTop="15dp"
                android:id="@+id/syn"
                android:text="Synonyms"
+               android:textSize="12sp"
                android:backgroundTint="#ffcc00"
                android:layout_marginLeft="30dp"
                android:background="@android:drawable/editbox_dropdown_light_frame"/>
@@ -76,6 +77,7 @@
                android:layout_toRightOf="@+id/syn"
                android:layout_below="@+id/cat"
                android:id="@+id/ant"
+               android:textSize="12sp"
                android:text="antonyms"
                android:backgroundTint="#ffcc00"
                android:layout_marginTop="15dp"

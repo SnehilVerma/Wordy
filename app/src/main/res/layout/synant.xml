@@ -2,23 +2,27 @@
 <FrameLayout
     android:layout_height="wrap_content"
     android:layout_width="wrap_content"
+    android:background="#d3d3d3"
     xmlns:android="http://schemas.android.com/apk/res/android"
     >
 
 
+
+
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="230sp">
+        android:layout_height="230sp"
+        android:background="@color/yellow">
 
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/round_background1"
+            android:background="@drawable/round_background2"
             android:text="Antonyms: "
             android:id="@+id/ant_tag"
             android:padding="10sp"
-            android:textColor="@android:color/black"
+            android:textColor="@android:color/white"
             android:textSize="20sp"
             android:layout_marginTop="10sp"
             />
@@ -33,31 +37,57 @@
             android:layout_marginRight="10sp"
             android:layout_marginBottom="10sp"
             xmlns:card_view="http://schemas.android.com/apk/res-auto"
-            card_view:cardBackgroundColor="#d3d3d3">
+            card_view:cardBackgroundColor="#ffffff">
 
+
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginTop="20sp"
+                android:src="@drawable/diamond"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10sp"
+                android:textSize="20sp"
                 android:textColor="@android:color/black"
                 android:text="ANT 1"
+                android:layout_marginLeft="30sp"
                 android:id="@+id/ant1"/>
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginTop="50sp"
+                android:src="@drawable/diamond"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="ANT 2"
+                android:textSize="20sp"
+                android:layout_marginLeft="30sp"
                 android:id="@+id/ant2"
                 android:textColor="@android:color/black"
-                android:layout_marginTop="30sp"/>
+                android:layout_marginTop="40sp"/>
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginTop="80sp"
+                android:src="@drawable/diamond"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/ant3"
                 android:text="ANT 3"
+                android:textSize="20sp"
+                android:layout_marginLeft="30sp"
                 android:textColor="@android:color/black"
-                android:layout_marginTop="60sp"/>
+                android:layout_marginTop="70sp"/>
 
 
 
@@ -71,6 +101,7 @@
         android:layout_width="wrap_content"
         android:layout_height="230sp"
         android:id="@+id/lower"
+        android:background="@color/darkpurple"
         android:layout_marginTop="225sp">
 
 
@@ -80,6 +111,7 @@
             android:background="@drawable/round_background1"
             android:text="Synonyms: "
             android:padding="10sp"
+
             android:id="@+id/syn_tag"
             android:textColor="@android:color/black"
             android:textSize="20sp"
@@ -97,31 +129,57 @@
             android:layout_marginRight="10sp"
             android:layout_marginBottom="10sp"
             xmlns:card_view="http://schemas.android.com/apk/res-auto"
-            card_view:cardBackgroundColor="#d3d3d3">
+            card_view:cardBackgroundColor="#ffffff">
 
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginTop="20sp"
+                android:src="@drawable/diamond"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="SYN 1"
+                android:layout_marginTop="10sp"
                 android:textColor="@android:color/black"
+                android:textSize="20sp"
+                android:text="SYN 1"
+                android:layout_marginLeft="30sp"
                 android:id="@+id/syn1"/>
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginTop="50sp"
+                android:src="@drawable/diamond"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="SYN 2"
-                android:textColor="@android:color/black"
+                android:layout_marginLeft="30sp"
                 android:id="@+id/syn2"
-                android:layout_marginTop="30sp"/>
+                android:textSize="20sp"
+                android:textColor="@android:color/black"
+                android:layout_marginTop="40sp"/>
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginTop="80sp"
+                android:src="@drawable/diamond"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/syn3"
                 android:text="SYN 3"
+                android:textSize="20sp"
+                android:layout_marginLeft="30sp"
                 android:textColor="@android:color/black"
-                android:layout_marginTop="60sp"/>
+                android:layout_marginTop="70sp"/>
+
 
 
 

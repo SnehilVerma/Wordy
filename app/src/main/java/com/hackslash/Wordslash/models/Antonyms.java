@@ -9,6 +9,7 @@ public class Antonyms {
 
     public String a1;
     public String a2;
+    public String a3;
 
     public Antonyms(){}
 

@@ -4,24 +4,16 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Query;
 
 /**
- * Created by snehil on 17/12/16.
+ * Created by snehil on 21/12/16.
  */
 
-public class BasicList extends MeaningList {
-
-
-    public BasicList(){}
-
+public class MyFavList extends MeaningList {
 
     @Override
     public Query getQuery(DatabaseReference databaseReference) {
-        Query allWordsQuery = databaseReference.child("Basic")
-                .limitToFirst(100);
+        Query myWordsQuery = databaseReference.child("UserFav")
+                .child(getUid());
 
-
-        return allWordsQuery;
+        return myWordsQuery;
     }
-
-
-
 }

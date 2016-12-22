@@ -25,11 +25,13 @@ import com.google.firebase.database.ValueEventListener;
 import com.hackslash.Wordslash.R;
 import com.hackslash.Wordslash.SynAnt;
 import com.hackslash.Wordslash.ViewHolder.WordHolder;
+import com.hackslash.Wordslash.WordDetailActivity;
 import com.hackslash.Wordslash.models.Antonyms;
 import com.hackslash.Wordslash.models.Meaning;
 import com.hackslash.Wordslash.models.Synonyms;
 import com.hackslash.Wordslash.models.User;
 import com.hackslash.Wordslash.models.UserMeanings;
+import com.hackslash.Wordslash.models.WordDetail;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -119,7 +121,34 @@ public abstract class MeaningList extends Fragment {
                     public void onClick(View v) {
 
 
-                        Toast.makeText(getActivity(),"wait for details",Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(getActivity(),"wait for details",Toast.LENGTH_SHORT).show();
+
+                        mDatabase.child("Usage").child(viewHolder.getWord()).addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                WordDetail wordDetail = dataSnapshot.getValue(WordDetail.class);
+                                //Toast.makeText(getActivity(), wordDetail.u1 + " & " + wordDetail.u2, Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(getActivity(), WordDetailActivity.class);
+                                Bundle extras = new Bundle();
+                                extras.putString("word",model.word);
+                                extras.putString("pro",wordDetail.pro);
+                                extras.putString("u1", wordDetail.u1);
+                                extras.putString("u2", wordDetail.u2);
+                                intent.putExtras(extras);
+                                startActivity(intent);
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+
+                            }
+                        });
+
+
+
+
+
+
 
 
 

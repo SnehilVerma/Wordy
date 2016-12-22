@@ -12,13 +12,18 @@
         android:theme="@style/AppTheme">
 
         <activity android:name=".AllWords"
-                  android:theme="@style/AppTheme"
-                  android:label="WordSlash">
+                  android:theme="@style/AppTheme.NoActionBar">
         </activity>
 
         <activity android:name=".SynAnt"
                   android:theme="@style/AppTheme"
                   android:label="WordSlash">
+        </activity>
+
+        <activity android:name=".WordDetailActivity"
+                  android:theme="@style/AppTheme"
+                  android:label="WordSlash">
+
         </activity>
 
         <activity

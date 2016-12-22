@@ -10,7 +10,6 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -40,7 +39,7 @@ import com.hackslash.Wordslash.models.User;
 
 
 
-public class MainActivity extends AppCompatActivity
+public class MainActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener ,GoogleApiClient.OnConnectionFailedListener,GoogleApiClient.ConnectionCallbacks  {
 
 
@@ -104,6 +103,10 @@ public class MainActivity extends AppCompatActivity
                     writeNewUser(username,user.getUid(),user.getEmail(),user.getUid());
 
 
+
+
+                    //dismiss progress dialog.
+                    hideProgressDialog();
                     Intent intent=new Intent(MainActivity.this,AllWords.class);
                     startActivity(intent);
 
@@ -146,6 +149,8 @@ public class MainActivity extends AppCompatActivity
         findViewById(R.id.sign_in_button).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
+                // show progress dialog
+                showProgressDialog();
                 signIn();
             }
         });

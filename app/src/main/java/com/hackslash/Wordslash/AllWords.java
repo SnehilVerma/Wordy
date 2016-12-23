@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.arlib.floatingsearchview.FloatingSearchView;
+import com.facebook.login.LoginManager;
 import com.google.firebase.auth.FirebaseAuth;
 import com.hackslash.Wordslash.Fragments.BasicList;
 import com.hackslash.Wordslash.Fragments.IntermediateList;
@@ -35,7 +36,9 @@ public class AllWords extends BaseActivity implements NavigationView.OnNavigatio
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+
         mAuth.signOut();
+        LoginManager.getInstance().logOut();
         finish();
 
     }

@@ -24,6 +24,7 @@ import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
+import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.Auth;
@@ -275,8 +276,10 @@ public class MainActivity extends BaseActivity
                         // signed in user can be handled in the listener.
                         if (!task.isSuccessful()) {
                             Log.w(TAG, "signInWithCredential", task.getException());
-                            Toast.makeText(MainActivity.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
+                            LoginManager.getInstance().logOut();
+                            hideProgressDialog();
+                            Toast.makeText(MainActivity.this, "Authentication failed, account already exists with same email, try a different Sign in method",
+                                    Toast.LENGTH_LONG).show();
                         }
 
 
@@ -366,16 +369,13 @@ public class MainActivity extends BaseActivity
 
     }
 
-    
+
 
 
 
 
     @Override
     public void onBackPressed() {
-
-
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {

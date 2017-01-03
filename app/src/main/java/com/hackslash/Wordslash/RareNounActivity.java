@@ -71,7 +71,9 @@ public class RareNounActivity extends BaseActivity implements NavigationView.OnN
         //toolbar.setTitleTextColor(Color.WHITE);
 
         page_title=(TextView)findViewById(R.id.page_title);
-        page_title.setText("Lesser Known Nouns");
+        page_title.setText("Things you didn't know had names!");
+
+
 
 
 
@@ -138,6 +140,8 @@ public class RareNounActivity extends BaseActivity implements NavigationView.OnN
         mPager.setAdapter(mPagerAdapter);
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mPager);
+
+        
     }
 
 

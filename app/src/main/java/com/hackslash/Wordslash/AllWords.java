@@ -97,6 +97,7 @@ public class AllWords extends BaseActivity implements NavigationView.OnNavigatio
         page_title=(TextView)findViewById(R.id.page_title);
         page_title.setText("Lesser Known Verbs");
 
+
         //toolbar.setTitleTextColor(Color.WHITE);
 
 

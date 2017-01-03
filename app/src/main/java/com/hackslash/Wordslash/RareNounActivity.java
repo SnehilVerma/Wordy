@@ -1,8 +1,6 @@
 package com.hackslash.Wordslash;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -20,27 +18,20 @@ import com.arlib.floatingsearchview.FloatingSearchView;
 import com.facebook.login.LoginManager;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.auth.FirebaseAuth;
-import com.hackslash.Wordslash.Fragments.BasicList;
-import com.hackslash.Wordslash.Fragments.IntermediateList;
-import com.hackslash.Wordslash.Fragments.MyFavList;
+import com.hackslash.Wordslash.Fragments.NounFavList;
+import com.hackslash.Wordslash.Fragments.Rare;
 
 /**
  * Created by snehil on 17/12/16.
  */
 
-public class AllWords extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class RareNounActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private FragmentPagerAdapter mPagerAdapter;
     private ViewPager mPager;
     private FirebaseAuth mAuth;
     private FloatingSearchView mSearchView;
     GoogleApiClient mGoogleApiClient;
-
-
-
-
-
-
 
     boolean doubleBackToExitPressedOnce = false;
 
@@ -49,28 +40,12 @@ public class AllWords extends BaseActivity implements NavigationView.OnNavigatio
     // double back pressed exit.
     @Override
     public void onBackPressed() {
-        if (doubleBackToExitPressedOnce) {
-            //super.onBackPressed();
-
-            Intent intent = new Intent(Intent.ACTION_MAIN);
-            intent.addCategory(Intent.CATEGORY_HOME);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
-            finish();
-            System.exit(0);
-            return;
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
         }
-
-        this.doubleBackToExitPressedOnce = true;
-        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
-
-        new Handler().postDelayed(new Runnable() {
-
-            @Override
-            public void run() {
-                doubleBackToExitPressedOnce=false;
-            }
-        }, 2000);
     }
 
 
@@ -82,14 +57,14 @@ public class AllWords extends BaseActivity implements NavigationView.OnNavigatio
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_all);
+        setContentView(R.layout.activity_rare);
 
 
         mAuth=FirebaseAuth.getInstance();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        AllWords.this.setTitle(mAuth.getCurrentUser().getDisplayName());
+        RareNounActivity.this.setTitle(mAuth.getCurrentUser().getDisplayName());
         //toolbar.setTitleTextColor(Color.WHITE);
 
 
@@ -118,39 +93,33 @@ public class AllWords extends BaseActivity implements NavigationView.OnNavigatio
         });
         */
 
-
-
-
-
-
-
         //Toast.makeText(AllWords.this,FirebaseAuth.getInstance().getCurrentUser().getDisplayName(),Toast.LENGTH_SHORT).show();
 
         mPagerAdapter=new FragmentPagerAdapter(getSupportFragmentManager()){
 
 
             private final Fragment[] mFragments=new Fragment[]{
-                    new BasicList(),
-                    new IntermediateList(),
-                    new MyFavList()
+                    new Rare(),
+                    new NounFavList()
             };
 
             private final String[] mFragmentNames=new String[]{
-
-                    "Basic",
-                    "Intermediate",
+                    "Rare",
                     "Favorites"
-
             };
+
+
             @Override
             public Fragment getItem(int position) {
                 return mFragments[position];
             }
 
+
             @Override
             public int getCount() {
                 return mFragments.length;
             }
+
 
             @Override
             public CharSequence getPageTitle(int position){
@@ -198,17 +167,18 @@ public class AllWords extends BaseActivity implements NavigationView.OnNavigatio
         int id = item.getItemId();
 
         if (id == R.id.nav_help) {
-            Toast.makeText(AllWords.this,"success",Toast.LENGTH_SHORT).show();
+            Toast.makeText(RareNounActivity.this,"success",Toast.LENGTH_SHORT).show();
         } else if (id == R.id.nav_logout) {
 
         } else if (id == R.id.nav_fav) {
             //move to favourites tab.
             mPager.setCurrentItem(2);
+
+
+
         }
-        else if(id==R.id.nav_less_noun){
-            //go to RareNounActivity activity
-            Intent i=new Intent(AllWords.this,RareNounActivity.class);
-            startActivity(i);
+        else if(id== R.id.nav_home){
+            finish();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

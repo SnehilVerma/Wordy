@@ -66,6 +66,7 @@
                android:id="@+id/syn"
                android:text="Synonyms"
                android:textSize="12sp"
+               android:textColor="@color/black"
                android:backgroundTint="#ffcc00"
                android:layout_marginLeft="30dp"
                />

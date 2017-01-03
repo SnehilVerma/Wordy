@@ -14,6 +14,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.arlib.floatingsearchview.FloatingSearchView;
@@ -35,6 +36,8 @@ public class AllWords extends BaseActivity implements NavigationView.OnNavigatio
     private FirebaseAuth mAuth;
     private FloatingSearchView mSearchView;
     GoogleApiClient mGoogleApiClient;
+
+    private TextView page_title;
 
 
 
@@ -90,6 +93,10 @@ public class AllWords extends BaseActivity implements NavigationView.OnNavigatio
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         AllWords.this.setTitle(mAuth.getCurrentUser().getDisplayName());
+
+        page_title=(TextView)findViewById(R.id.page_title);
+        page_title.setText("Lesser Known Verbs");
+
         //toolbar.setTitleTextColor(Color.WHITE);
 
 
@@ -209,6 +216,11 @@ public class AllWords extends BaseActivity implements NavigationView.OnNavigatio
             //go to RareNounActivity activity
             Intent i=new Intent(AllWords.this,RareNounActivity.class);
             startActivity(i);
+        }
+        else if(id==R.id.nav_less_adj){
+            Intent i=new Intent(AllWords.this,RareAdjActivity.class);
+            startActivity(i);
+
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

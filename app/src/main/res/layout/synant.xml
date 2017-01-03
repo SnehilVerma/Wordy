@@ -2,7 +2,7 @@
 <FrameLayout
     android:layout_height="wrap_content"
     android:layout_width="wrap_content"
-    android:background="#d3d3d3"
+    android:background="@color/beige"
     xmlns:android="http://schemas.android.com/apk/res/android"
     >
 
@@ -12,7 +12,7 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="230sp"
-        android:background="@color/yellow">
+        android:background="@color/lg_brown">
 
 
         <TextView
@@ -101,19 +101,20 @@
         android:layout_width="wrap_content"
         android:layout_height="230sp"
         android:id="@+id/lower"
-        android:background="@color/darkpurple"
-        android:layout_marginTop="225sp">
+
+        android:background="@color/lg_brown"
+        android:layout_marginTop="250sp">
 
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/round_background1"
+            android:background="@drawable/round_background2"
             android:text="Synonyms: "
             android:padding="10sp"
 
             android:id="@+id/syn_tag"
-            android:textColor="@android:color/black"
+            android:textColor="@android:color/white"
             android:textSize="20sp"
             android:layout_marginTop="10sp"
             />

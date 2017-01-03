@@ -9,13 +9,13 @@
 
     <android.support.v7.widget.RecyclerView
         android:layout_marginTop="0sp"
-        android:id="@+id/rare_list"
+        android:id="@+id/adj_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
         android:clipToPadding="false"
         android:padding="5sp"
         android:scrollbars="vertical"
-        tools:listitem="@layout/item_noun" />
+        tools:listitem="@layout/item_adj" />
 
 </FrameLayout>

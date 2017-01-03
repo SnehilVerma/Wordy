@@ -19,4 +19,12 @@
     <color name="lbl_name">#333333</color>
     <color name="btn_logut_bg">#ff6861</color>
     <color name="yellow">#ffcc00</color>
+    <color name="star_yellow">#ffe100</color>
+    <color name="dark_brown">#2c0c04</color>
+    <color name="light_brown">#8d3811</color>
+    <color name="beige">#e2b357</color>
+    <color name="grey_brown">#885e4a</color>
+    <color name="lg_brown">#be9c85</color>
+
+
 </resources>

@@ -1,5 +1,6 @@
 package com.hackslash.Wordslash;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -19,14 +20,15 @@ import com.arlib.floatingsearchview.FloatingSearchView;
 import com.facebook.login.LoginManager;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.auth.FirebaseAuth;
-import com.hackslash.Wordslash.Fragments.NounFavList;
-import com.hackslash.Wordslash.Fragments.Rare;
+import com.hackslash.Wordslash.Fragments.AdjFavList;
+import com.hackslash.Wordslash.Fragments.AdjectiveList;
 
 /**
- * Created by snehil on 17/12/16.
+ * Created by snehil on 3/1/17.
  */
 
-public class RareNounActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class RareAdjActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
+
 
     private FragmentPagerAdapter mPagerAdapter;
     private ViewPager mPager;
@@ -60,19 +62,19 @@ public class RareNounActivity extends BaseActivity implements NavigationView.OnN
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_rare);
+        setContentView(R.layout.activity_rareadj);
 
 
         mAuth=FirebaseAuth.getInstance();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        RareNounActivity.this.setTitle(mAuth.getCurrentUser().getDisplayName());
+        RareAdjActivity.this.setTitle(mAuth.getCurrentUser().getDisplayName());
         //toolbar.setTitleTextColor(Color.WHITE);
 
-        page_title=(TextView)findViewById(R.id.page_title);
-        page_title.setText("Lesser Known Nouns");
 
+        page_title=(TextView)findViewById(R.id.page_title);
+        page_title.setText("Lesser Known Adjectives");
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -106,12 +108,12 @@ public class RareNounActivity extends BaseActivity implements NavigationView.OnN
 
 
             private final Fragment[] mFragments=new Fragment[]{
-                    new Rare(),
-                    new NounFavList()
+                    new AdjectiveList(),
+                    new AdjFavList()
             };
 
             private final String[] mFragmentNames=new String[]{
-                    "Nouns",
+                    "Adjectives",
                     "Favorites"
             };
 
@@ -174,18 +176,22 @@ public class RareNounActivity extends BaseActivity implements NavigationView.OnN
         int id = item.getItemId();
 
         if (id == R.id.nav_help) {
-            Toast.makeText(RareNounActivity.this,"success",Toast.LENGTH_SHORT).show();
+            Toast.makeText(RareAdjActivity.this,"success",Toast.LENGTH_SHORT).show();
         } else if (id == R.id.nav_logout) {
 
         } else if (id == R.id.nav_fav) {
             //move to favourites tab.
-            mPager.setCurrentItem(2);
+            mPager.setCurrentItem(1);
 
 
 
         }
         else if(id== R.id.nav_home){
             finish();
+        }
+        else if(id==R.id.nav_less_noun){
+            Intent i=new Intent(RareAdjActivity.this, RareNounActivity.class);
+            startActivity(i);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -194,5 +200,5 @@ public class RareNounActivity extends BaseActivity implements NavigationView.OnN
     }
 
 
-}
 
+}

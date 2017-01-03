@@ -3,14 +3,13 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_less_noun"
+            android:id="@+id/nav_home"
             android:icon="@drawable/ic_history_black_24dp"
-            android:title="Rare Nouns" />
-
+            android:title="Home" />
         <item
-            android:id="@+id/nav_less_adj"
+            android:id="@+id/nav_less_noun"
             android:icon="@drawable/ic_invert_colors_black_24dp"
-            android:title="Rare Adjectives" />
+            android:title="Rare Nouns" />
 
         <item
             android:id="@+id/nav_help"

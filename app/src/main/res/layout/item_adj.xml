@@ -29,42 +29,62 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Noun"
+                android:text="@string/word"
                 android:textStyle="bold"
-                android:id="@+id/noun"
+                android:id="@+id/adj"
                 android:textColor="@color/dark_brown"
                 android:textSize="15sp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/noun"
+                android:layout_below="@+id/adj"
                 android:textSize="15sp"
                 android:layout_marginTop="5dp"
-                android:id="@+id/desc"
+                android:id="@+id/meaning"
                 android:maxLines="3"
                 android:layout_marginRight="60sp"
                 android:textColor="@color/dark_brown"
                 android:text="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor."/>
 
-
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/meaning"
+                android:textSize="12sp"
+                android:id="@+id/cat"
+                android:layout_marginTop="10dp"
+                android:text="advanced"
+                android:visibility="invisible"/>
 
 
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/desc"
+                android:layout_below="@+id/cat"
                 android:layout_marginTop="15dp"
-                android:id="@+id/noun_det"
-                android:layout_marginLeft="110sp"
-                android:text="View Details"
-                android:textColor="@color/black"
+                android:id="@+id/syn"
+                android:text="Synonyms"
                 android:textSize="12sp"
-                android:backgroundTint="@color/star_yellow"
-
+                android:textColor="@color/white"
+                android:backgroundTint="@color/dark_brown"
+                android:layout_marginLeft="30dp"
                 />
 
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/syn"
+                android:layout_below="@+id/cat"
+                android:id="@+id/ant"
+                android:textSize="12sp"
+                android:text="antonyms"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/dark_brown"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="80dp"/>
 
 
 

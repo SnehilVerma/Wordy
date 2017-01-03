@@ -22,24 +22,24 @@ import com.google.firebase.database.MutableData;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.Transaction;
 import com.google.firebase.database.ValueEventListener;
-import com.hackslash.Wordslash.NounDetailActivity;
 import com.hackslash.Wordslash.R;
-import com.hackslash.Wordslash.ViewHolder.NounHolder;
-import com.hackslash.Wordslash.models.NounDetail;
-import com.hackslash.Wordslash.models.RareNoun;
+import com.hackslash.Wordslash.SynAnt;
+import com.hackslash.Wordslash.ViewHolder.AdjHolder;
+import com.hackslash.Wordslash.models.Adjective;
+import com.hackslash.Wordslash.models.Antonyms;
+import com.hackslash.Wordslash.models.Synonyms;
 import com.hackslash.Wordslash.models.User;
-import com.hackslash.Wordslash.models.UserMeanings;
-import com.hackslash.Wordslash.models.UserNouns;
+import com.hackslash.Wordslash.models.UserAdj;
 
 import java.util.HashMap;
 import java.util.Map;
 
+
 /**
- * Created by snehil on 1/1/17.
+ * Created by snehil on 3/1/17.
  */
 
-public abstract class RareList extends Fragment {
-
+public abstract class RareAdjList extends Fragment{
 
     private static final String TAG = "RareListFragment";
 
@@ -52,11 +52,11 @@ public abstract class RareList extends Fragment {
 
 
     private FirebaseAuth auth;
-    private FirebaseRecyclerAdapter<RareNoun, NounHolder> mAdapter;
+    private FirebaseRecyclerAdapter<Adjective, AdjHolder> mAdapter;
     private RecyclerView mRecycler;
     private LinearLayoutManager mManager;
 
-    public RareList() {
+    public RareAdjList() {
     }
 
 
@@ -66,7 +66,7 @@ public abstract class RareList extends Fragment {
 
 
         super.onCreateView(inflater, container, savedInstanceState);
-        View rootView = inflater.inflate(R.layout.activity_all_rare, container, false);
+        View rootView = inflater.inflate(R.layout.activity_all_adj, container, false);
 
         // [START create_database_reference]
         mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -77,7 +77,7 @@ public abstract class RareList extends Fragment {
         auth = FirebaseAuth.getInstance();
         auth = FirebaseAuth.getInstance();
 
-        mRecycler = (RecyclerView) rootView.findViewById(R.id.rare_list);
+        mRecycler = (RecyclerView) rootView.findViewById(R.id.adj_list);
         mRecycler.setHasFixedSize(true);
         return rootView;
 
@@ -99,16 +99,16 @@ public abstract class RareList extends Fragment {
         mRecycler.setLayoutManager(mManager);
 
         // Set up FirebaseRecyclerAdapter with the Query
-        Query nounsQuery = getQuery(mDatabase);
+        Query adjQuery = getQuery(mDatabase);
 
 
 
 
-        mAdapter = new FirebaseRecyclerAdapter<RareNoun, NounHolder>(RareNoun.class, R.layout.item_noun,
-                NounHolder.class, nounsQuery) {
+        mAdapter = new FirebaseRecyclerAdapter<Adjective, AdjHolder>(Adjective.class, R.layout.item_adj,
+                AdjHolder.class, adjQuery) {
 
             @Override
-            protected void populateViewHolder(final NounHolder viewHolder, final RareNoun model, final int position) {
+            protected void populateViewHolder(final AdjHolder viewHolder, final Adjective model, final int position) {
                 final DatabaseReference wordRef = getRef(position);
 
 
@@ -131,20 +131,21 @@ public abstract class RareList extends Fragment {
                     public void onClick(View v) {
 
 
-                        //Toast.makeText(getActivity(),"wait for details",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(),"wait for details",Toast.LENGTH_SHORT).show();
 
-                        mDatabase.child("Details").child(viewHolder.getNoun()).addValueEventListener(new ValueEventListener() {
+
+                        /*
+                        mDatabase.child("Details").child(viewHolder.getAdj()).addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot) {
-                                NounDetail wordDetail = dataSnapshot.getValue(NounDetail.class);
+                                AdjDetail wordDetail = dataSnapshot.getValue(AdjDetail.class);
                                 //Toast.makeText(getActivity(), wordDetail.u1 + " & " + wordDetail.u2, Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(getActivity(), NounDetailActivity.class);
+                                Intent intent = new Intent(getActivity(), AdjDetailActivity.class);
                                 Bundle extras = new Bundle();
-                                extras.putString("word",model.noun);
+                                extras.putString("word",model.adj);
                                 extras.putString("pro",wordDetail.pro);
                                 extras.putString("u1", wordDetail.u1);
                                 extras.putString("u2", wordDetail.u2);
-                                extras.putString("image",wordDetail.image);
                                 intent.putExtras(extras);
                                 startActivity(intent);
                             }
@@ -154,6 +155,8 @@ public abstract class RareList extends Fragment {
 
                             }
                         });
+
+                        */
 
 
 
@@ -171,17 +174,68 @@ public abstract class RareList extends Fragment {
                             @Override
                             public void onClick(View view) {
 
+                                mDatabase.child("Antonyms").child(viewHolder.getAdj()).addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(DataSnapshot dataSnapshot) {
+                                        Antonyms antonyms = dataSnapshot.getValue(Antonyms.class);
+                                        Toast.makeText(getActivity(), antonyms.a1 + " & " + antonyms.a2, Toast.LENGTH_SHORT).show();
+                                        Intent intent = new Intent(getActivity(), SynAnt.class);
+                                        Bundle extras = new Bundle();
+                                        extras.putString("a1", antonyms.a1);
+                                        extras.putString("a2", antonyms.a2);
+                                        intent.putExtras(extras);
+                                        startActivity(intent);
+                                    }
+
+                                    @Override
+                                    public void onCancelled(DatabaseError databaseError) {
+
+                                    }
+                                });
+
+
+                            }
+                        }, new View.OnClickListener() {
+
+                            @Override
+                            public void onClick(View view) {
+
+                                mDatabase.child("Synonyms").child(viewHolder.getAdj()).addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(DataSnapshot dataSnapshot) {
+                                        Synonyms synonyms = dataSnapshot.getValue(Synonyms.class);
+                                        Toast.makeText(getActivity(), synonyms.s1 + " & " + synonyms.s2, Toast.LENGTH_SHORT).show();
+                                        Intent intent = new Intent(getActivity(), SynAnt.class);
+                                        Bundle extras = new Bundle();
+                                        extras.putString("s1", synonyms.s1);
+                                        extras.putString("s2", synonyms.s2);
+                                        intent.putExtras(extras);
+                                        startActivity(intent);
+                                    }
+
+                                    @Override
+                                    public void onCancelled(DatabaseError databaseError) {
+
+                                    }
+                                });
+
+
+                            }
+                        }, new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
 
 
 
 
 
-                                mDatabase.child("UserNounFav").child(getUid()).child(model.noun).addListenerForSingleValueEvent(
+
+                                mDatabase.child("UserAdjFav").child(getUid()).child(model.adj).addListenerForSingleValueEvent(
                                         new ValueEventListener() {
                                             @Override
                                             public void onDataChange(DataSnapshot dataSnapshot) {
                                                 //get user value
-                                                UserMeanings um=dataSnapshot.getValue(UserMeanings.class);
+                                                UserAdj um=dataSnapshot.getValue(UserAdj.class);
 
 
                                                 if(um!=null){
@@ -198,8 +252,8 @@ public abstract class RareList extends Fragment {
 
 
                                                     FirebaseUser user=auth.getCurrentUser();
-                                                    final String word=viewHolder.getNoun();
-                                                    final String meaning=viewHolder.getDesc();
+                                                    final String word=viewHolder.getAdj();
+                                                    final String meaning=viewHolder.getMeaning();
 
 
                                                     final String userId=user.getUid();
@@ -219,7 +273,7 @@ public abstract class RareList extends Fragment {
                                                                                 Toast.LENGTH_SHORT).show();
                                                                     } else {
                                                                         // Write new post
-                                                                        writeToFav(userId, user.username, word, meaning, model);
+                                                                        writeToFav(userId, user.username, word, meaning,model);
                                                                     }
 
                                                                 }
@@ -250,6 +304,33 @@ public abstract class RareList extends Fragment {
 
 
 
+                                //model.star.put(getUid(),true);
+
+                                /*
+                                if(model.star.containsKey(getUid())){
+                                    viewHolder.star.setImageResource(R.drawable.heart);
+
+                                }else{
+                                    viewHolder.star.setImageResource(R.drawable.star);
+                                }*/
+
+                                /*
+
+                                String pos=Integer.toString(position);
+
+                                starBase.child(model.category).child(pos).child(model.word).addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(DataSnapshot dataSnapshot) {
+                                        dataSnapshot.getRef().child("star").child(getUid()).setValue(true);
+                                    }
+
+                                    @Override
+                                    public void onCancelled(DatabaseError databaseError) {
+
+                                    }
+                                });
+
+                                */
 
 
 
@@ -258,20 +339,10 @@ public abstract class RareList extends Fragment {
 
 
 
-                            }
-                        }, new View.OnClickListener() {
-
-                            @Override
-                            public void onClick(View view) {
-
-
-
-                                Toast.makeText(getActivity(),"Default",Toast.LENGTH_SHORT).show();
 
 
                             }
                         }
-
                 );
             }
         };
@@ -284,17 +355,17 @@ public abstract class RareList extends Fragment {
 
 
 
-    public void writeToFav(String userid, String username, String word, String meaning, RareNoun model){
+    public void writeToFav(String userid, String username, String word, String meaning, Adjective model){
 
         //String key = mDatabase.child("UserFav").push().getKey();
 
-        UserNouns userfav = new UserNouns(userid, username, word, meaning, true);
+        UserAdj userfav = new UserAdj(userid, username, word, meaning, true);
         Map<String, Object> userfavValues = userfav.toMap();
 
         Map<String, Object> childUpdates = new HashMap<>();
 
         //Gg Snehil Verma.
-        childUpdates.put("/UserNounFav/" + userid +"/" + word, userfavValues);
+        childUpdates.put("/UserAdjFav/" + userid +"/" + word, userfavValues);
 
         Toast.makeText(getActivity().getApplicationContext(),"Added to Favorites",Toast.LENGTH_SHORT).show();
 
@@ -329,7 +400,7 @@ public abstract class RareList extends Fragment {
 
             @Override
             public Transaction.Result doTransaction(MutableData mutableData) {
-                UserNouns u=mutableData.getValue(UserNouns.class);
+                UserAdj u=mutableData.getValue(UserAdj.class);
                 if(u==null){
                     return Transaction.success(mutableData);
                 }

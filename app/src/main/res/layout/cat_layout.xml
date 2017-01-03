@@ -16,9 +16,28 @@
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_background2"
+        android:textColor="@color/dark_brown"
+        android:padding="10sp"
+        android:layout_marginTop="2sp"
+        android:layout_below="@+id/toolbar"
+        android:id="@+id/page_title"
+        android:textSize="15sp"
+        android:layout_marginLeft="2sp"
+        android:layout_marginRight="2sp"
+        android:text="Lesser known verbs"
+        android:gravity="center_horizontal"
+
+        />
+
+
     <android.support.design.widget.TabLayout
         android:id="@+id/tabs"
-        android:layout_below="@+id/toolbar"
+        android:layout_marginTop="2sp"
+        android:layout_below="@+id/page_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

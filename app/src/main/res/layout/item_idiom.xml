@@ -29,41 +29,40 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Noun"
-                android:textStyle="bold"
-                android:id="@+id/noun"
-                android:textColor="@color/dark_brown"
+                android:text="Idiom"
+                android:textStyle="bold|italic"
+                android:id="@+id/idiom"
+                android:textColor="@color/light_brown"
+
+
                 android:textSize="15sp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/noun"
+                android:layout_below="@+id/idiom"
                 android:textSize="15sp"
-                android:layout_marginTop="5dp"
-                android:id="@+id/desc"
+                android:layout_marginTop="10sp"
+                android:id="@+id/meaning"
                 android:maxLines="3"
                 android:layout_marginRight="60sp"
                 android:textColor="@color/dark_brown"
                 android:text="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor."/>
 
-
-
-
-
-            <Button
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/desc"
-                android:layout_marginTop="15dp"
-                android:id="@+id/noun_det"
-                android:layout_marginLeft="110sp"
-                android:text="View Details"
-                android:textColor="@color/white"
+                android:layout_below="@+id/meaning"
                 android:textSize="12sp"
-                android:backgroundTint="@color/red"
+                android:textColor="@color/beige"
+                android:id="@+id/cat"
+                android:layout_marginTop="10dp"
+                android:text="advanced"/>
 
-                />
+
+
+
+
 
 
 

@@ -1,8 +1,6 @@
 package com.hackslash.Wordslash;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -17,64 +15,24 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.arlib.floatingsearchview.FloatingSearchView;
 import com.facebook.login.LoginManager;
-import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.auth.FirebaseAuth;
-import com.hackslash.Wordslash.Fragments.BasicList;
-import com.hackslash.Wordslash.Fragments.IntermediateList;
-import com.hackslash.Wordslash.Fragments.MyFavList;
+import com.hackslash.Wordslash.Fragments.BodyList;
+import com.hackslash.Wordslash.Fragments.ColourList;
+import com.hackslash.Wordslash.Fragments.IdiomFavList;
 
 /**
- * Created by snehil on 17/12/16.
+ * Created by snehil on 4/1/17.
  */
 
-public class AllWords extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class RareIdiomActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private FragmentPagerAdapter mPagerAdapter;
     private ViewPager mPager;
     private FirebaseAuth mAuth;
-    private FloatingSearchView mSearchView;
-    GoogleApiClient mGoogleApiClient;
-
     private TextView page_title;
 
 
-
-
-
-
-
-    boolean doubleBackToExitPressedOnce = false;
-
-
-
-    // double back pressed exit.
-    @Override
-    public void onBackPressed() {
-        if (doubleBackToExitPressedOnce) {
-            //super.onBackPressed();
-
-            Intent intent = new Intent(Intent.ACTION_MAIN);
-            intent.addCategory(Intent.CATEGORY_HOME);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
-            finish();
-            System.exit(0);
-            return;
-        }
-
-        this.doubleBackToExitPressedOnce = true;
-        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
-
-        new Handler().postDelayed(new Runnable() {
-
-            @Override
-            public void run() {
-                doubleBackToExitPressedOnce=false;
-            }
-        }, 2000);
-    }
 
 
 
@@ -85,17 +43,17 @@ public class AllWords extends BaseActivity implements NavigationView.OnNavigatio
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_all);
+        setContentView(R.layout.activity_idioms);
 
 
         mAuth=FirebaseAuth.getInstance();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        AllWords.this.setTitle(mAuth.getCurrentUser().getDisplayName());
+        RareIdiomActivity.this.setTitle(mAuth.getCurrentUser().getDisplayName());
 
         page_title=(TextView)findViewById(R.id.page_title);
-        page_title.setText("Lesser Known Verbs");
+        page_title.setText("Interesting and crazy idioms!");
 
 
         //toolbar.setTitleTextColor(Color.WHITE);
@@ -138,15 +96,15 @@ public class AllWords extends BaseActivity implements NavigationView.OnNavigatio
 
 
             private final Fragment[] mFragments=new Fragment[]{
-                    new BasicList(),
-                    new IntermediateList(),
-                    new MyFavList()
+                    new BodyList(),
+                    new ColourList(),
+                    new IdiomFavList()
             };
 
             private final String[] mFragmentNames=new String[]{
 
-                    "Basic",
-                    "Intermediate",
+                    "Body Idioms",
+                    "Colour Idioms",
                     "Favorites"
 
             };
@@ -206,28 +164,28 @@ public class AllWords extends BaseActivity implements NavigationView.OnNavigatio
         int id = item.getItemId();
 
         if (id == R.id.nav_help) {
-            Toast.makeText(AllWords.this,"success",Toast.LENGTH_SHORT).show();
+            Toast.makeText(RareIdiomActivity.this,"success",Toast.LENGTH_SHORT).show();
         } else if (id == R.id.nav_logout) {
 
         } else if (id == R.id.nav_fav) {
             //move to favourites tab.
             mPager.setCurrentItem(2);
         }
+        else if(id==R.id.nav_home){
+            finish();
+        }
+        /*
         else if(id==R.id.nav_less_noun){
             //go to RareNounActivity activity
-            Intent i=new Intent(AllWords.this,RareNounActivity.class);
+            Intent i=new Intent(RareIdiomActivity.this,RareNounActivity.class);
             startActivity(i);
         }
         else if(id==R.id.nav_less_adj){
-            Intent i=new Intent(AllWords.this,RareAdjActivity.class);
+            Intent i=new Intent(RareIdiomActivity.this,RareAdjActivity.class);
             startActivity(i);
 
         }
-        else if(id==R.id.nav_less_idiom){
-            Intent i=new Intent(AllWords.this,RareIdiomActivity.class);
-            startActivity(i);
-
-        }
+        */
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -236,4 +194,3 @@ public class AllWords extends BaseActivity implements NavigationView.OnNavigatio
 
 
 }
-

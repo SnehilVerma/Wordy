@@ -11,7 +11,7 @@
 
 
     <include
-        layout="@layout/cat_adj_layout"
+        layout="@layout/cat_idiom_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
@@ -23,7 +23,7 @@
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_main"
-        app:menu="@menu/activity_all_adj" />
+        app:menu="@menu/activity_all_rare" />
 
 
 

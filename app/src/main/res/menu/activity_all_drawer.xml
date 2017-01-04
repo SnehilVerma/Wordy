@@ -14,6 +14,13 @@
             />
 
         <item
+            android:id="@+id/nav_less_idiom"
+            android:icon="@drawable/ic_menu_send"
+            android:title="IDIOMS you can use everyday"
+            />
+
+
+        <item
             android:id="@+id/nav_help"
             android:icon="@drawable/ic_search_black_24dp"
             android:title="Help" />

@@ -141,7 +141,7 @@ public class RareNounActivity extends BaseActivity implements NavigationView.OnN
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mPager);
 
-        
+
     }
 
 

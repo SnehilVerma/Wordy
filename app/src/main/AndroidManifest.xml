@@ -27,6 +27,12 @@
                   android:label="WordSlash">
         </activity>
 
+        <activity android:name=".RareIdiomActivity"
+                  android:theme="@style/AppTheme.NoActionBar"
+                  android:label="WordSlash">
+
+        </activity>
+
         <activity android:name=".RareAdjActivity"
                   android:theme="@style/AppTheme.NoActionBar"
                   android:label="WordSlash"></activity>

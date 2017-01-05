@@ -3,13 +3,19 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_home"
-            android:icon="@drawable/ic_history_black_24dp"
-            android:title="Home" />
-        <item
             android:id="@+id/nav_less_noun"
-            android:icon="@drawable/ic_invert_colors_black_24dp"
-            android:title="Rare Nouns" />
+            android:icon="@drawable/n"
+            android:title="NOUNS you never heard of" />
+
+        <item
+            android:id="@+id/nav_less_verb"
+            android:icon="@drawable/v"
+            android:title="Fun with VERBS" />
+        <item
+            android:id="@+id/nav_less_idiom"
+            android:icon="@drawable/i"
+            android:title="Go to IDIOMS" />
+
 
         <item
             android:id="@+id/nav_help"
@@ -21,7 +27,7 @@
             android:title="LogOut" />
         <item
             android:id="@+id/nav_fav"
-            android:icon="@drawable/heart2"
+            android:icon="@drawable/f"
             android:title="Show Favourites" />
 
     </group>

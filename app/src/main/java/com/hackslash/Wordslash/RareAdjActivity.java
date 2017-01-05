@@ -186,12 +186,23 @@ public class RareAdjActivity extends BaseActivity implements NavigationView.OnNa
 
 
         }
-        else if(id== R.id.nav_home){
-            finish();
-        }
         else if(id==R.id.nav_less_noun){
             Intent i=new Intent(RareAdjActivity.this, RareNounActivity.class);
+            i.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
             startActivity(i);
+        }
+        else if(id==R.id.nav_less_verb){
+
+
+            Intent intent = new Intent(RareAdjActivity.this, AllWords.class);
+            intent .setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+            startActivity(intent);
+
+        }
+        else if(id==R.id.nav_less_idiom){
+            Intent intent = new Intent(RareAdjActivity.this,RareIdiomActivity.class);
+            intent .setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

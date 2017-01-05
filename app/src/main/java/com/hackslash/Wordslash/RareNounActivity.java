@@ -1,5 +1,6 @@
 package com.hackslash.Wordslash;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -184,13 +185,26 @@ public class RareNounActivity extends BaseActivity implements NavigationView.OnN
         } else if (id == R.id.nav_fav) {
             //move to favourites tab.
             mPager.setCurrentItem(2);
+        }
+        else if(id==R.id.nav_less_adj){
+            Intent intent = new Intent(RareNounActivity.this, RareAdjActivity.class);
+            intent .setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+            startActivity(intent);
+        }
+        else if(id==R.id.nav_less_verb){
 
 
+            Intent intent = new Intent(RareNounActivity.this, AllWords.class);
+            intent .setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+            startActivity(intent);
 
         }
-        else if(id== R.id.nav_home){
-            finish();
+        else if(id==R.id.nav_less_idiom){
+            Intent intent = new Intent(RareNounActivity.this,RareIdiomActivity.class);
+            intent .setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+            startActivity(intent);
         }
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

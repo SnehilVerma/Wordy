@@ -2,10 +2,20 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="single">
+
         <item
-            android:id="@+id/nav_home"
-            android:icon="@drawable/ic_history_black_24dp"
-            android:title="Home" />
+            android:id="@+id/nav_less_verb"
+            android:icon="@drawable/v"
+            android:title="Fun with VERBS" />
+        <item
+            android:id="@+id/nav_less_idiom"
+            android:icon="@drawable/i"
+            android:title="Go to IDIOMS" />
+        <item
+            android:id="@+id/nav_less_adj"
+            android:icon="@drawable/a"
+            android:title="ADJECTIVES junction" />
+
         <item
             android:id="@+id/nav_help"
             android:icon="@drawable/ic_search_black_24dp"
@@ -16,7 +26,7 @@
             android:title="LogOut" />
         <item
             android:id="@+id/nav_fav"
-            android:icon="@drawable/heart2"
+            android:icon="@drawable/f"
             android:title="Show Favourites" />
 
     </group>

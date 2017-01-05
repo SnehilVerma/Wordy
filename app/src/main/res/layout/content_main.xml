@@ -6,7 +6,9 @@
  android:layout_width="match_parent"
  android:layout_height="match_parent"
  android:fitsSystemWindows="true"
+ android:background="@color/white"
  tools:context=".MainActivity">
+
 
     <android.support.v7.widget.Toolbar
     android:id="@+id/toolbar"
@@ -15,22 +17,63 @@
     android:background="?attr/colorPrimary"
     app:popupTheme="@style/AppTheme" />
 
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="WordSlash"
+            android:layout_marginTop="100sp"
+            android:textColor="#3da8c9"
+            android:textSize="50sp"/>
+
+
+
+
+
+
+    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                                        android:id="@+id/card_view"
+                                        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                                        android:layout_width="300sp"
+                                        android:layout_height="280sp"
+                                        android:layout_gravity="center"
+                                        android:layout_marginTop="200sp"
+                                        card_view:cardUseCompatPadding="true"
+                                        card_view:contentPadding="1sp"
+                                        card_view:cardCornerRadius="0dp"
+                                        card_view:cardElevation="10sp"
+
+
+        >
+
+
+
+
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:background="@android:color/white"
+        android:background="@color/white"
         android:gravity="center"
         android:orientation="vertical"
-        android:padding="@dimen/activity_horizontal_margin">
+        android:layout_marginTop="30sp"
+        >
 
 
-        <ImageView
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="50dp"
-            android:src="@drawable/w2"
-            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="User Login"
+            android:textColor="@color/dark_brown"
+            android:textSize="20sp"/>
+
+
+
+
+
 
 
         <!-- Login Button -->
@@ -38,34 +81,40 @@
 
         <com.facebook.login.widget.LoginButton
             android:id="@+id/login_button"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="30dp" />
+            android:layout_marginTop="30sp"
+            android:paddingTop="13dp"
+            android:paddingBottom="13dp"
+            android:layout_marginBottom="20dp" />
 
         <com.google.android.gms.common.SignInButton
             android:id="@+id/sign_in_button"
             android:layout_marginTop="0sp"
             android:layout_centerHorizontal="true"
-            android:layout_width="match_parent"
+            android:layout_width="180sp"
             android:layout_height="wrap_content"
             />
 
 
     </LinearLayout>
 
+    </android.support.v7.widget.CardView>
+
+    <ImageView
+        android:id="@+id/user_profile_photo"
+        android:layout_width="90sp"
+        android:layout_height="90sp"
+        android:background="@drawable/user_image"
+        android:elevation="10sp"
+        android:layout_marginTop="230dp"
+        android:layout_marginLeft="140sp"
+        android:src="@drawable/ufive"
+         />
 
 
 
-
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_gravity="center|bottom"
-        android:layout_marginBottom="20dp"
-        android:visibility="gone" />
 
 
 </android.support.design.widget.CoordinatorLayout>

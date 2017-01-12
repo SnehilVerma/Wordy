@@ -13,11 +13,15 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.arlib.floatingsearchview.FloatingSearchView;
 import com.facebook.login.LoginManager;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.auth.FirebaseAuth;
 import com.hackslash.Wordslash.Fragments.AdjFavList;
@@ -69,12 +73,24 @@ public class RareAdjActivity extends BaseActivity implements NavigationView.OnNa
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        RareAdjActivity.this.setTitle(mAuth.getCurrentUser().getDisplayName());
+        RareAdjActivity.this.setTitle("Wordslash");
         //toolbar.setTitleTextColor(Color.WHITE);
 
 
         page_title=(TextView)findViewById(R.id.page_title);
         page_title.setText("Lesser Known Adjectives");
+
+
+        MobileAds.initialize(getApplicationContext(), "ca-app-pub-4707827873780621~7932168994");
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        //AdRequest adRequest = new AdRequest.Builder().addTestDevice("1B090A86461A4534173AD77FCC504EB8").build();
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
+
+
+
+
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -87,6 +103,14 @@ public class RareAdjActivity extends BaseActivity implements NavigationView.OnNa
         navigationView.setNavigationItemSelectedListener(this);
 
 
+
+
+        View header=navigationView.getHeaderView(0);
+        TextView name=(TextView)header.findViewById(R.id.name);
+        TextView mail=(TextView)header.findViewById(R.id.mail);
+
+        name.setText(mAuth.getCurrentUser().getDisplayName());
+        mail.setText(mAuth.getCurrentUser().getEmail());
 
 
         /*

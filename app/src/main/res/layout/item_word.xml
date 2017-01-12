@@ -104,7 +104,7 @@
                 android:layout_width="40sp"
                 android:layout_height="40sp"
                 android:background="?attr/selectableItemBackground"
-                android:src="@drawable/star" />
+                android:src="@drawable/hearty" />
 
             <TextView
                 android:layout_width="wrap_content"

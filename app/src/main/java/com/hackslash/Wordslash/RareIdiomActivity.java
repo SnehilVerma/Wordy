@@ -13,14 +13,20 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.login.LoginManager;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.google.firebase.auth.FirebaseAuth;
 import com.hackslash.Wordslash.Fragments.BodyList;
 import com.hackslash.Wordslash.Fragments.ColourList;
 import com.hackslash.Wordslash.Fragments.IdiomFavList;
+import com.hackslash.Wordslash.Fragments.NewsList;
+import com.hackslash.Wordslash.Fragments.TimeList;
 
 /**
  * Created by snehil on 4/1/17.
@@ -51,13 +57,19 @@ public class RareIdiomActivity extends BaseActivity implements NavigationView.On
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        RareIdiomActivity.this.setTitle(mAuth.getCurrentUser().getDisplayName());
+        RareIdiomActivity.this.setTitle("Wordslash");
 
         page_title=(TextView)findViewById(R.id.page_title);
         page_title.setText("Interesting and crazy idioms!");
 
 
         //toolbar.setTitleTextColor(Color.WHITE);
+
+        MobileAds.initialize(getApplicationContext(), "ca-app-pub-4707827873780621~7932168994");
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        //AdRequest adRequest = new AdRequest.Builder().addTestDevice("1B090A86461A4534173AD77FCC504EB8").build();
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -70,6 +82,12 @@ public class RareIdiomActivity extends BaseActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
 
 
+        View header=navigationView.getHeaderView(0);
+        TextView name=(TextView)header.findViewById(R.id.name);
+        TextView mail=(TextView)header.findViewById(R.id.mail);
+
+        name.setText(mAuth.getCurrentUser().getDisplayName());
+        mail.setText(mAuth.getCurrentUser().getEmail());
 
 
         /*
@@ -99,6 +117,8 @@ public class RareIdiomActivity extends BaseActivity implements NavigationView.On
             private final Fragment[] mFragments=new Fragment[]{
                     new BodyList(),
                     new ColourList(),
+                    new NewsList(),
+                    new TimeList(),
                     new IdiomFavList()
             };
 
@@ -106,6 +126,8 @@ public class RareIdiomActivity extends BaseActivity implements NavigationView.On
 
                     "Body Idioms",
                     "Colour Idioms",
+                    "News Idioms",
+                    "Time Idioms",
                     "Favorites"
 
             };
@@ -170,7 +192,7 @@ public class RareIdiomActivity extends BaseActivity implements NavigationView.On
 
         } else if (id == R.id.nav_fav) {
             //move to favourites tab.
-            mPager.setCurrentItem(2);
+            mPager.setCurrentItem(4);
         }
         else if(id==R.id.nav_less_adj){
             Intent intent = new Intent(RareIdiomActivity.this, RareAdjActivity.class);

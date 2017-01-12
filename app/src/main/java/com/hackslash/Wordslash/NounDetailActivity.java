@@ -79,7 +79,7 @@ public class NounDetailActivity extends BaseActivity {
                 hideProgressDialog();
                 return false;
             }
-        })
+        }).override(200,200).centerCrop()
                 .into(imageView);
 
 
@@ -91,8 +91,8 @@ public class NounDetailActivity extends BaseActivity {
         //get file path
 
         pro.setText("\\"+pn+"\\");
-        u1.setText("1)"+"\n"+ b.getString("u1"));
-        u2.setText("2)"+"\n"+ b.getString("u2"));
+        u1.setText(b.getString("u1"));
+        u2.setText(b.getString("u2"));
 
 
     }

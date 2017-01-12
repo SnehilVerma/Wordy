@@ -99,10 +99,10 @@ public abstract class IdiomList extends Fragment{
 
 
                 if(model.star.containsKey(getUid())){
-                    viewHolder.star.setImageResource(R.drawable.heart);
+                    viewHolder.star.setImageResource(R.drawable.heartx);
 
                 }else{
-                    viewHolder.star.setImageResource(R.drawable.star);
+                    viewHolder.star.setImageResource(R.drawable.hearty);
                 }
 
 
@@ -174,7 +174,7 @@ public abstract class IdiomList extends Fragment{
                                                 else{
 
 
-                                                    viewHolder.star.setImageResource(R.drawable.heart);
+                                                    viewHolder.star.setImageResource(R.drawable.heartx);
 
 
 

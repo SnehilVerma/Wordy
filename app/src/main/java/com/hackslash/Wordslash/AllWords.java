@@ -12,15 +12,22 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.arlib.floatingsearchview.FloatingSearchView;
 import com.facebook.login.LoginManager;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.hackslash.Wordslash.Fragments.BasicList;
 import com.hackslash.Wordslash.Fragments.IntermediateList;
 import com.hackslash.Wordslash.Fragments.MyFavList;
@@ -92,13 +99,39 @@ public class AllWords extends BaseActivity implements NavigationView.OnNavigatio
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        AllWords.this.setTitle(mAuth.getCurrentUser().getDisplayName());
+        AllWords.this.setTitle("Wordslash");
 
         page_title=(TextView)findViewById(R.id.page_title);
         page_title.setText("Lesser Known Verbs");
 
 
         //toolbar.setTitleTextColor(Color.WHITE);
+        MobileAds.initialize(getApplicationContext(), "ca-app-pub-4707827873780621~7932168994");
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
+
+
+        if (getIntent().getExtras() != null) {
+
+            for (String key : getIntent().getExtras().keySet()) {
+                String value = getIntent().getExtras().getString(key);
+
+                if (key.equals("RareNounActivity") && value.equals("True")) {
+                    Intent intent = new Intent(this, RareNounActivity.class);
+                    intent.putExtra("value", value);
+                    startActivity(intent);
+                    finish();
+                }
+
+            }
+        }
+
+        subscribeToPushService();
+
+
+
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -110,21 +143,14 @@ public class AllWords extends BaseActivity implements NavigationView.OnNavigatio
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        View header=navigationView.getHeaderView(0);
+        TextView name=(TextView)header.findViewById(R.id.name);
+        TextView mail=(TextView)header.findViewById(R.id.mail);
+
+        name.setText(mAuth.getCurrentUser().getDisplayName());
+        mail.setText(mAuth.getCurrentUser().getEmail());
 
 
-
-        /*
-        mSearchView.setOnQueryChangeListener(new FloatingSearchView.OnQueryChangeListener() {
-            @Override
-            public void onSearchTextChanged(String oldQuery, final String newQuery) {
-
-                //get suggestions based on newQuery
-
-                //pass them on to the search view
-                mSearchView.swapSuggestions(newSuggestions);
-            }
-        });
-        */
 
 
 
@@ -171,6 +197,23 @@ public class AllWords extends BaseActivity implements NavigationView.OnNavigatio
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mPager);
     }
+
+
+
+
+    private void subscribeToPushService() {
+        FirebaseMessaging.getInstance().subscribeToTopic("news");
+
+        Log.d("Wordslash", "Subscribed");
+
+
+        String token = FirebaseInstanceId.getInstance().getToken();
+
+        // Log and toast
+        Log.d("Wordslash", token);
+
+    }
+
 
 
     @Override

@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent">
+<android.support.v7.widget.CardView
+    card_view:contentPadding="10sp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_below="@+id/ant_tag"
+    android:layout_marginTop="10sp"
+    android:layout_marginLeft="10sp"
+    android:layout_marginRight="10sp"
+    android:layout_marginBottom="10sp"
+    card_view:cardElevation="10sp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    card_view:cardBackgroundColor="#ffffff">
+
 
 
     <RelativeLayout
@@ -34,12 +45,12 @@
 
         <ImageView
             android:layout_width="200sp"
-            android:layout_height="200sp"
+            android:layout_height="200dp"
             android:id="@+id/image"
             android:layout_toRightOf="@+id/noun_det"
-            android:layout_marginLeft="60sp"
+            android:layout_marginLeft="40sp"
             android:layout_marginTop="20sp"
-            android:src="@drawable/w2"/>
+            android:src="@drawable/ina"/>
 
 
     </RelativeLayout>
@@ -55,6 +66,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Description"
+            android:textColor="@color/light_brown"
             android:id="@+id/usage"
             android:layout_marginLeft="30sp"
             android:textSize="20dp"
@@ -70,11 +82,11 @@
             android:layout_marginTop="20sp"
             android:layout_below="@+id/usage"
             android:layout_marginLeft="50sp"
-            android:maxLines="3"
+            android:maxLines="4"
             android:textColor="@android:color/black"
             android:id="@+id/u1"
             android:layout_marginRight="50sp"
-            android:textSize="20dp"
+            android:textSize="15sp"
 
             />
 
@@ -83,13 +95,13 @@
             android:layout_height="wrap_content"
             android:text="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
             android:layout_marginTop="20sp"
-            android:maxLines="3"
+            android:maxLines="4"
             android:id="@+id/u2"
             android:textColor="@android:color/black"
             android:layout_below="@+id/u1"
             android:layout_marginLeft="50sp"
             android:layout_marginRight="50sp"
-            android:textSize="20dp"
+            android:textSize="15sp"
 
             />
 
@@ -97,4 +109,4 @@
 
     </RelativeLayout>
 
-</FrameLayout>
+</android.support.v7.widget.CardView>

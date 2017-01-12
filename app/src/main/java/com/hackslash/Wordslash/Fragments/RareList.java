@@ -118,10 +118,10 @@ public abstract class RareList extends Fragment {
 
 
                 if(model.star.containsKey(getUid())){
-                    viewHolder.star.setImageResource(R.drawable.heart);
+                    viewHolder.star.setImageResource(R.drawable.heartw);
 
                 }else{
-                    viewHolder.star.setImageResource(R.drawable.star);
+                    viewHolder.star.setImageResource(R.drawable.heartz);
                 }
 
 
@@ -192,7 +192,7 @@ public abstract class RareList extends Fragment {
                                                 else{
 
 
-                                                    viewHolder.star.setImageResource(R.drawable.heart);
+                                                    viewHolder.star.setImageResource(R.drawable.heartw);
 
 
 

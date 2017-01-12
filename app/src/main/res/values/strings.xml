@@ -36,6 +36,13 @@
         <string name="meaning">meaning</string>
         <string name="facebook_app_id">580440375491194</string>
         <string name="fb_login_protocol_scheme">fb580440375491194</string>
+        <string name="banner_ad_unit_id">ca-app-pub-4707827873780621/9408902194</string>
+        <string name="banner_ad_unit_id2">ca-app-pub-4707827873780621/5617830991</string>
+        <string name="banner_ad_unit_id4">ca-app-pub-4707827873780621/3722295392</string>
+        <string name="banner_ad_unit_id3">ca-app-pub-4707827873780621/6675761795</string>
+
+
+
 
 
 </resources>

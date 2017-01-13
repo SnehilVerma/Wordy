@@ -11,7 +11,7 @@ import static com.hackslash.Wordslash.R.id.syn1;
  * Created by snehil on 19/12/16.
  */
 
-public class SynAnt extends AppCompatActivity {
+public class SynAnt2 extends AppCompatActivity {
 
 
 
@@ -28,7 +28,7 @@ public class SynAnt extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.synant);
+        setContentView(R.layout.synant2);
 
         atv1=(TextView)findViewById(R.id.ant1);
         atv2=(TextView)findViewById(R.id.ant2);

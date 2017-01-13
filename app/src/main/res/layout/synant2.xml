@@ -19,11 +19,11 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/round_background2"
+            android:background="@drawable/round_background5"
             android:text="Antonyms: "
             android:id="@+id/ant_tag"
             android:padding="10sp"
-            android:textColor="@color/dark_brown"
+            android:textColor="@color/white"
             android:textSize="20sp"
             android:layout_marginTop="10sp"
             />
@@ -90,12 +90,12 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/round_background2"
+            android:background="@drawable/round_background5"
             android:text="Synonyms: "
             android:padding="10sp"
 
             android:id="@+id/syn_tag"
-            android:textColor="@color/dark_brown"
+            android:textColor="@color/white"
             android:textSize="20sp"
             android:layout_marginTop="10sp"
             />

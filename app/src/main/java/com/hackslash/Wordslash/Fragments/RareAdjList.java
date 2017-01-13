@@ -23,7 +23,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.Transaction;
 import com.google.firebase.database.ValueEventListener;
 import com.hackslash.Wordslash.R;
-import com.hackslash.Wordslash.SynAnt;
+import com.hackslash.Wordslash.SynAnt2;
 import com.hackslash.Wordslash.ViewHolder.AdjHolder;
 import com.hackslash.Wordslash.models.Adjective;
 import com.hackslash.Wordslash.models.Antonyms;
@@ -179,7 +179,7 @@ public abstract class RareAdjList extends Fragment{
                                     public void onDataChange(DataSnapshot dataSnapshot) {
                                         Antonyms antonyms = dataSnapshot.getValue(Antonyms.class);
                                         Toast.makeText(getActivity(), antonyms.a1 + " & " + antonyms.a2, Toast.LENGTH_SHORT).show();
-                                        Intent intent = new Intent(getActivity(), SynAnt.class);
+                                        Intent intent = new Intent(getActivity(), SynAnt2.class);
                                         Bundle extras = new Bundle();
                                         extras.putString("a1", antonyms.a1);
                                         extras.putString("a2", antonyms.a2);
@@ -205,7 +205,7 @@ public abstract class RareAdjList extends Fragment{
                                     public void onDataChange(DataSnapshot dataSnapshot) {
                                         Synonyms synonyms = dataSnapshot.getValue(Synonyms.class);
                                         Toast.makeText(getActivity(), synonyms.s1 + " & " + synonyms.s2, Toast.LENGTH_SHORT).show();
-                                        Intent intent = new Intent(getActivity(), SynAnt.class);
+                                        Intent intent = new Intent(getActivity(), SynAnt2.class);
                                         Bundle extras = new Bundle();
                                         extras.putString("s1", synonyms.s1);
                                         extras.putString("s2", synonyms.s2);

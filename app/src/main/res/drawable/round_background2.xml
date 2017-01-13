@@ -7,11 +7,11 @@
             <corners android:radius="0dp"/>
         </shape>
     </item>
-    <item android:right="1sp" android:left="1sp" android:bottom="1sp" android:top="1sp">
+    <item android:right="1dp" android:left="1dp" android:bottom="1dp" android:top="1dp">
         <shape
             android:shape="rectangle">
             <solid android:color="@color/star_yellow"/>
-            <corners android:radius="0sp"/>
+            <corners android:radius="0dp"/>
         </shape>
     </item>
 </layer-list>

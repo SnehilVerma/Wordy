@@ -174,13 +174,15 @@ public abstract class RareAdjList extends Fragment{
                             @Override
                             public void onClick(View view) {
 
-                                mDatabase.child("Antonyms").child(viewHolder.getAdj()).addValueEventListener(new ValueEventListener() {
+                                mDatabase.child("AdjAntonyms").child(viewHolder.getAdj()).addValueEventListener(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(DataSnapshot dataSnapshot) {
                                         Antonyms antonyms = dataSnapshot.getValue(Antonyms.class);
                                         Toast.makeText(getActivity(), antonyms.a1 + " & " + antonyms.a2, Toast.LENGTH_SHORT).show();
                                         Intent intent = new Intent(getActivity(), SynAnt2.class);
                                         Bundle extras = new Bundle();
+                                        String stat="ant";
+                                        extras.putString("stat",stat);
                                         extras.putString("a1", antonyms.a1);
                                         extras.putString("a2", antonyms.a2);
                                         intent.putExtras(extras);
@@ -200,13 +202,15 @@ public abstract class RareAdjList extends Fragment{
                             @Override
                             public void onClick(View view) {
 
-                                mDatabase.child("Synonyms").child(viewHolder.getAdj()).addValueEventListener(new ValueEventListener() {
+                                mDatabase.child("AdjSynonyms").child(viewHolder.getAdj()).addValueEventListener(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(DataSnapshot dataSnapshot) {
                                         Synonyms synonyms = dataSnapshot.getValue(Synonyms.class);
                                         Toast.makeText(getActivity(), synonyms.s1 + " & " + synonyms.s2, Toast.LENGTH_SHORT).show();
                                         Intent intent = new Intent(getActivity(), SynAnt2.class);
                                         Bundle extras = new Bundle();
+                                        String stat="syn";
+                                        extras.putString("stat",stat);
                                         extras.putString("s1", synonyms.s1);
                                         extras.putString("s2", synonyms.s2);
                                         intent.putExtras(extras);

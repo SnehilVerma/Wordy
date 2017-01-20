@@ -42,6 +42,27 @@
         <string name="banner_ad_unit_id3">ca-app-pub-4707827873780621/6675761795</string>
 
 
+        <string name="next">NEXT</string>
+        <string name="skip">SKIP</string>
+        <string name="start">GOT IT</string>
+
+        <string name="slide_1_title">Learn exciting words and idioms!</string>
+        <string name="slide_1_desc">Compilation of rare nouns,verbs,idioms and adjectives.</string>
+
+        <string name="slide_2_title">Browse and mark them your favorite.</string>
+        <string name="slide_2_desc">New words added every month!</string>
+
+
+        <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
+        <string name="play_again">Play Again</string>
+
+
+                <string name="rate_dialog_title">Rate this app</string>
+                <string name="rate_dialog_message">Like this app? Rate us! Thanks for your support!</string>
+                <string name="rate_dialog_ok">Rate It Now</string>
+                <string name="rate_dialog_cancel">Remind Me Later</string>
+                <string name="rate_dialog_no">No, Thanks</string>
+
 
 
 

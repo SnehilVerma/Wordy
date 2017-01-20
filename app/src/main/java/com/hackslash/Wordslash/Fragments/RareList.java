@@ -131,29 +131,7 @@ public abstract class RareList extends Fragment {
                     public void onClick(View v) {
 
 
-                        //Toast.makeText(getActivity(),"wait for details",Toast.LENGTH_SHORT).show();
-
-                        mDatabase.child("Details").child(viewHolder.getNoun()).addValueEventListener(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(DataSnapshot dataSnapshot) {
-                                NounDetail wordDetail = dataSnapshot.getValue(NounDetail.class);
-                                //Toast.makeText(getActivity(), wordDetail.u1 + " & " + wordDetail.u2, Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(getActivity(), NounDetailActivity.class);
-                                Bundle extras = new Bundle();
-                                extras.putString("word",model.noun);
-                                extras.putString("pro",wordDetail.pro);
-                                extras.putString("u1", wordDetail.u1);
-                                extras.putString("u2", wordDetail.u2);
-                                extras.putString("image",wordDetail.image);
-                                intent.putExtras(extras);
-                                startActivity(intent);
-                            }
-
-                            @Override
-                            public void onCancelled(DatabaseError databaseError) {
-
-                            }
-                        });
+                        Toast.makeText(getActivity(),"Click on 'View Details' button for detail.",Toast.LENGTH_SHORT).show();
 
 
 
@@ -266,8 +244,27 @@ public abstract class RareList extends Fragment {
 
 
 
-                                Toast.makeText(getActivity(),"Default",Toast.LENGTH_SHORT).show();
+                                mDatabase.child("Details").child(viewHolder.getNoun()).addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(DataSnapshot dataSnapshot) {
+                                        NounDetail wordDetail = dataSnapshot.getValue(NounDetail.class);
+                                        //Toast.makeText(getActivity(), wordDetail.u1 + " & " + wordDetail.u2, Toast.LENGTH_SHORT).show();
+                                        Intent intent = new Intent(getActivity(), NounDetailActivity.class);
+                                        Bundle extras = new Bundle();
+                                        extras.putString("word",model.noun);
+                                        extras.putString("pro",wordDetail.pro);
+                                        extras.putString("u1", wordDetail.u1);
+                                        extras.putString("u2", wordDetail.u2);
+                                        extras.putString("image",wordDetail.image);
+                                        intent.putExtras(extras);
+                                        startActivity(intent);
+                                    }
 
+                                    @Override
+                                    public void onCancelled(DatabaseError databaseError) {
+
+                                    }
+                                });
 
                             }
                         }

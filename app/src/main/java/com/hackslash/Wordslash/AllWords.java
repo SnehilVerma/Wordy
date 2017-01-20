@@ -32,6 +32,10 @@ import com.hackslash.Wordslash.Fragments.BasicList;
 import com.hackslash.Wordslash.Fragments.IntermediateList;
 import com.hackslash.Wordslash.Fragments.MyFavList;
 
+import hotchemi.android.rate.AppRate;
+import hotchemi.android.rate.OnClickButtonListener;
+import hotchemi.android.rate.StoreType;
+
 /**
  * Created by snehil on 17/12/16.
  */
@@ -110,6 +114,34 @@ public class AllWords extends BaseActivity implements NavigationView.OnNavigatio
         AdView mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
+
+
+
+        //launching app rater on play store.
+        AppRate.with(this)
+                .setStoreType(StoreType.GOOGLEPLAY) //default is Google, other option is Amazon
+                .setInstallDays(0) // default 10, 0 means install day.
+                .setLaunchTimes(1) // default 10
+                .setRemindInterval(2) // default 1 day.
+                .setShowLaterButton(true) // default true.
+                .setDebug(true) // default false.
+                .setCancelable(false) // default false.
+                .setOnClickButtonListener(new OnClickButtonListener() { // callback listener.
+                    @Override
+                    public void onClickButton(int which) {
+                        Log.d(MainActivity.class.getName(), Integer.toString(which));
+                    }
+                })
+                .setTitle(R.string.rate_dialog_title)
+                .setTextLater(R.string.rate_dialog_cancel)
+                .setTextNever(R.string.rate_dialog_no)
+                .setTextRateNow(R.string.rate_dialog_ok)
+                .setMessage(R.string.rate_dialog_message)
+                .monitor();
+
+        AppRate.showRateDialogIfMeetsConditions(this);
+
+        //AppRater.app_launched(this);
 
 
 

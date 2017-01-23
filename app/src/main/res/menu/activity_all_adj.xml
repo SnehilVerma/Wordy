@@ -17,10 +17,7 @@
             android:title="Go to IDIOMS" />
 
 
-        <item
-            android:id="@+id/nav_help"
-            android:icon="@drawable/help"
-            android:title="Help" />
+
         <item
             android:id="@+id/nav_logout"
             android:icon="@drawable/logout"
@@ -28,7 +25,7 @@
         <item
             android:id="@+id/nav_fav"
             android:icon="@drawable/heart4"
-            android:title="Show Favourites" />
+            android:title="Show Favorites" />
 
     </group>
 

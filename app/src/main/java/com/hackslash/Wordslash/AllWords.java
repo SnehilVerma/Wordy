@@ -174,6 +174,7 @@ public class AllWords extends BaseActivity implements NavigationView.OnNavigatio
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        navigationView.setItemIconTintList(null);
 
         View header=navigationView.getHeaderView(0);
         TextView name=(TextView)header.findViewById(R.id.name);
@@ -261,9 +262,6 @@ public class AllWords extends BaseActivity implements NavigationView.OnNavigatio
         int id=item.getItemId();
         if(id==R.id.action_logout){
 
-            LoginManager.getInstance().logOut();
-            mAuth.signOut();
-            finish();
             return true;
 
 
@@ -280,9 +278,14 @@ public class AllWords extends BaseActivity implements NavigationView.OnNavigatio
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_help) {
-            Toast.makeText(AllWords.this,"success",Toast.LENGTH_SHORT).show();
-        } else if (id == R.id.nav_logout) {
+         if (id == R.id.nav_logout) {
+
+            LoginManager.getInstance().logOut();
+            mAuth.signOut();
+            Intent intent = new Intent(AllWords.this,MainActivity.class);
+            intent .setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+            startActivity(intent);
+
 
         } else if (id == R.id.nav_fav) {
             //move to favourites tab.
@@ -291,15 +294,18 @@ public class AllWords extends BaseActivity implements NavigationView.OnNavigatio
         else if(id==R.id.nav_less_noun){
             //go to RareNounActivity activity
             Intent i=new Intent(AllWords.this,RareNounActivity.class);
+            i .setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
             startActivity(i);
         }
         else if(id==R.id.nav_less_adj){
             Intent i=new Intent(AllWords.this,RareAdjActivity.class);
+            i .setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
             startActivity(i);
 
         }
         else if(id==R.id.nav_less_idiom){
             Intent i=new Intent(AllWords.this,RareIdiomActivity.class);
+            i .setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
             startActivity(i);
 
         }

@@ -15,7 +15,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.facebook.login.LoginManager;
 import com.google.android.gms.ads.AdRequest;
@@ -80,7 +79,7 @@ public class RareIdiomActivity extends BaseActivity implements NavigationView.On
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
+        navigationView.setItemIconTintList(null);
 
         View header=navigationView.getHeaderView(0);
         TextView name=(TextView)header.findViewById(R.id.name);
@@ -166,10 +165,6 @@ public class RareIdiomActivity extends BaseActivity implements NavigationView.On
     public boolean onOptionsItemSelected(MenuItem item) {
         int id=item.getItemId();
         if(id==R.id.action_logout){
-
-            LoginManager.getInstance().logOut();
-            mAuth.signOut();
-            finish();
             return true;
 
 
@@ -186,9 +181,13 @@ public class RareIdiomActivity extends BaseActivity implements NavigationView.On
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_help) {
-            Toast.makeText(RareIdiomActivity.this,"success",Toast.LENGTH_SHORT).show();
-        } else if (id == R.id.nav_logout) {
+        if (id == R.id.nav_logout) {
+            LoginManager.getInstance().logOut();
+            mAuth.signOut();
+            Intent intent = new Intent(RareIdiomActivity.this,MainActivity.class);
+            intent .setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+            startActivity(intent);
+
 
         } else if (id == R.id.nav_fav) {
             //move to favourites tab.

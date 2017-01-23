@@ -257,7 +257,7 @@ public class MainActivity extends BaseActivity
                             Log.w(TAG, "signInWithCredential", task.getException());
                             LoginManager.getInstance().logOut();
                             hideProgressDialog();
-                            Toast.makeText(MainActivity.this, "Authentication failed, account already exists with same email, try a different Sign in method",
+                            Toast.makeText(MainActivity.this, "Account already exists with same email, try a different Sign in method",
                                     Toast.LENGTH_LONG).show();
                         }
 

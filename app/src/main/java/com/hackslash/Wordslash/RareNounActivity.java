@@ -15,7 +15,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.arlib.floatingsearchview.FloatingSearchView;
 import com.facebook.login.LoginManager;
@@ -95,7 +94,7 @@ public class RareNounActivity extends BaseActivity implements NavigationView.OnN
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
+        navigationView.setItemIconTintList(null);
 
         View header=navigationView.getHeaderView(0);
         TextView name=(TextView)header.findViewById(R.id.name);
@@ -174,9 +173,7 @@ public class RareNounActivity extends BaseActivity implements NavigationView.OnN
         int id=item.getItemId();
         if(id==R.id.action_logout){
 
-            LoginManager.getInstance().logOut();
-            mAuth.signOut();
-            finish();
+
             return true;
 
 
@@ -193,9 +190,13 @@ public class RareNounActivity extends BaseActivity implements NavigationView.OnN
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_help) {
-            Toast.makeText(RareNounActivity.this,"success",Toast.LENGTH_SHORT).show();
-        } else if (id == R.id.nav_logout) {
+        if (id == R.id.nav_logout) {
+            LoginManager.getInstance().logOut();
+            mAuth.signOut();
+            Intent intent = new Intent(RareNounActivity.this,MainActivity.class);
+            intent .setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+            startActivity(intent);
+
 
         } else if (id == R.id.nav_fav) {
             //move to favourites tab.

@@ -80,7 +80,7 @@
                android:layout_below="@+id/cat"
                android:id="@+id/ant"
                android:textSize="12sp"
-               android:text="antonyms"
+               android:text="Usage"
                android:backgroundTint="@color/star_yellow"
                android:textColor="@color/dark_brown"
                android:layout_marginTop="15dp"

@@ -15,7 +15,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.arlib.floatingsearchview.FloatingSearchView;
 import com.facebook.login.LoginManager;
@@ -101,7 +100,7 @@ public class RareAdjActivity extends BaseActivity implements NavigationView.OnNa
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
+        navigationView.setItemIconTintList(null);
 
 
 
@@ -180,9 +179,7 @@ public class RareAdjActivity extends BaseActivity implements NavigationView.OnNa
         int id=item.getItemId();
         if(id==R.id.action_logout){
 
-            LoginManager.getInstance().logOut();
-            mAuth.signOut();
-            finish();
+
             return true;
 
 
@@ -199,11 +196,15 @@ public class RareAdjActivity extends BaseActivity implements NavigationView.OnNa
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_help) {
-            Toast.makeText(RareAdjActivity.this,"success",Toast.LENGTH_SHORT).show();
-        } else if (id == R.id.nav_logout) {
+         if (id == R.id.nav_logout) {
+             LoginManager.getInstance().logOut();
+             mAuth.signOut();
+             Intent intent = new Intent(RareAdjActivity.this,MainActivity.class);
+             intent .setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+             startActivity(intent);
 
-        } else if (id == R.id.nav_fav) {
+
+         } else if (id == R.id.nav_fav) {
             //move to favourites tab.
             mPager.setCurrentItem(1);
 

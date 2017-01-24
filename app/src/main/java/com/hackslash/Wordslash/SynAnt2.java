@@ -60,17 +60,23 @@ public class SynAnt2 extends AppCompatActivity {
         if(stat.equals("ant")){
             rll.setVisibility(View.GONE);
             ivs.setVisibility(View.GONE);
-            atv1.setText(b.getString("a1"));
-            atv2.setText(b.getString("a2"));
+
+            atv1.setText("1)"+" "+ b.getString("a1"));
+            if(b.getString("a2")!=null)
+            atv2.setText("2)"+" "+ b.getString("a2"));
+            else
+            atv2.setVisibility(View.GONE);
 
         }
         else if(stat.equals("syn")){
 
             rlu.setVisibility(View.GONE);
             iva.setVisibility(View.GONE);
-            stv1.setText(b.getString("s1"));
-            stv2.setText(b.getString("s2"));
-
+            stv1.setText("1)"+" "+ b.getString("s1"));
+            if(b.getString("s2")!=null)
+            stv2.setText("2)"+" "+ b.getString("s2"));
+            else
+            stv2.setVisibility(View.GONE);
 
         }
 

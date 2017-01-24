@@ -43,6 +43,10 @@ public class WordDetailActivity extends AppCompatActivity {
 
 
 
+        //u2.setText("2)"+"\n"+ b.getString("u2"));
+
+
+
 
 
 

@@ -41,6 +41,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.hackslash.Wordslash.models.User;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 
 
 public class MainActivity extends BaseActivity
@@ -58,6 +60,11 @@ public class MainActivity extends BaseActivity
 
     private LoginButton loginButton;
     CallbackManager callbackManager;
+
+
+
+    Bundle parameters;
+
 
 
 
@@ -91,6 +98,25 @@ public class MainActivity extends BaseActivity
             public void onSuccess(LoginResult loginResult) {
                 Log.d(TAG, "facebook:onSuccess:" + loginResult);
                 showProgressDialog();
+
+
+                /*
+                GraphRequest request = GraphRequest.newMeRequest(loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
+
+                    @Override
+                    public void onCompleted(JSONObject object, GraphResponse response) {
+                        Log.i("LoginActivity", response.toString());
+                        // Get facebook data from login
+                        Bundle bFacebookData = getFacebookData(object);
+                    }
+                });
+                parameters = new Bundle();
+                parameters.putString("fields", "email"); // Parámetros que pedimos a facebook
+                request.setParameters(parameters);
+                request.executeAsync();
+                */
+
+
                 handleFacebookAccessToken(loginResult.getAccessToken());
 
 
@@ -125,10 +151,16 @@ public class MainActivity extends BaseActivity
                     // User is signed in
 
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
-                    String username = usernameFromEmail(user.getEmail());
 
 
-                    writeNewUser(username,user.getUid(),user.getEmail(),user.getUid());
+
+
+                        String username = usernameFromEmail(user.getEmail());
+                        writeNewUser(username, user.getUid(),user.getEmail(), user.getUid());
+
+
+
+
 
 
 
@@ -197,12 +229,17 @@ public class MainActivity extends BaseActivity
 
 
     private String usernameFromEmail(String email) {
-        if (email.contains("@")) {
-            return email.split("@")[0];
-        } else {
-            return email;
+        if (email != null) {
+            if (email.contains("@")) {
+                return email.split("@")[0];
+            } else {
+                return email;
+            }
+            }
+        return "Trusted user";
         }
-    }
+
+
 
     private void signIn() {
         Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
@@ -213,6 +250,7 @@ public class MainActivity extends BaseActivity
 
 
 
+    //add user database entry to the database.
     //add user database entry to the database.
     private void writeNewUser(String username,String userId, String email, String profile) {
 
@@ -240,7 +278,7 @@ public class MainActivity extends BaseActivity
 
     }
 
-    private void handleFacebookAccessToken(AccessToken token) {
+    private void handleFacebookAccessToken(final AccessToken token) {
         Log.d(TAG, "handleFacebookAccessToken:" + token);
 
         AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
@@ -249,6 +287,12 @@ public class MainActivity extends BaseActivity
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         Log.d(TAG, "signInWithCredential:onComplete:" + task.isSuccessful());
+
+
+
+
+
+
 
                         // If sign in fails, display a message to the user. If sign in succeeds
                         // the auth state listener will be notified and logic to handle the
@@ -265,6 +309,32 @@ public class MainActivity extends BaseActivity
                     }
                 });
     }
+
+
+
+
+
+    private Bundle getFacebookData(JSONObject object) {
+
+        try {
+            Bundle bundle = new Bundle();
+
+
+            if (object.has("email"))
+                bundle.putString("email", object.getString("email"));
+
+            return bundle;
+        }
+        catch(JSONException e) {
+            Log.d(TAG,"Error parsing JSON");
+        }
+
+        return null;
+
+    }
+
+
+
 
 
 
@@ -286,7 +356,7 @@ public class MainActivity extends BaseActivity
 
 
 
-    private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
+    private void firebaseAuthWithGoogle(final GoogleSignInAccount acct) {
         Log.d(TAG, "firebaseAuthWithGoogle:" + acct.getId());
 
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
@@ -295,6 +365,9 @@ public class MainActivity extends BaseActivity
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         Log.d(TAG, "signInWithCredential:onComplete:" + task.isSuccessful());
+
+
+
 
                         // If sign in fails, display a message to the user. If sign in succeeds
                         // the auth state listener will be notified and logic to handle the

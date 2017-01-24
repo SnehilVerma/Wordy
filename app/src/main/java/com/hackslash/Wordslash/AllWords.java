@@ -20,6 +20,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.arlib.floatingsearchview.FloatingSearchView;
+import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
 import com.facebook.login.LoginManager;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -117,11 +119,15 @@ public class AllWords extends BaseActivity implements NavigationView.OnNavigatio
 
 
 
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        AppEventsLogger.activateApp(this);
+
+
         //launching app rater on play store.
         AppRate.with(this)
                 .setStoreType(StoreType.GOOGLEPLAY) //default is Google, other option is Amazon
-                .setInstallDays(0) // default 10, 0 means install day.
-                .setLaunchTimes(1) // default 10
+                .setInstallDays(5) // default 10, 0 means install day.
+                .setLaunchTimes(5) // default 10
                 .setRemindInterval(2) // default 1 day.
                 .setShowLaterButton(true) // default true.
                 .setDebug(true) // default false.
@@ -181,7 +187,7 @@ public class AllWords extends BaseActivity implements NavigationView.OnNavigatio
         TextView mail=(TextView)header.findViewById(R.id.mail);
 
         name.setText(mAuth.getCurrentUser().getDisplayName());
-        mail.setText(mAuth.getCurrentUser().getEmail());
+        mail.setText("Browse our categories!");
 
 
 
@@ -280,6 +286,7 @@ public class AllWords extends BaseActivity implements NavigationView.OnNavigatio
 
          if (id == R.id.nav_logout) {
 
+            LoginManager.getInstance().logOut();
             LoginManager.getInstance().logOut();
             mAuth.signOut();
             Intent intent = new Intent(AllWords.this,MainActivity.class);

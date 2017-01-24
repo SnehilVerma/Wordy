@@ -15,9 +15,6 @@ public class SynAnt extends AppCompatActivity {
 
 
 
-    TextView atv1;
-    TextView atv2;
-    TextView atv3;
 
     TextView stv1;
     TextView stv2;
@@ -30,17 +27,11 @@ public class SynAnt extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.synant);
 
-        atv1=(TextView)findViewById(R.id.ant1);
-        atv2=(TextView)findViewById(R.id.ant2);
-
-
         stv1=(TextView)findViewById(syn1);
         stv2=(TextView)findViewById(R.id.syn2);
 
 
         Bundle b=getIntent().getExtras();
-        atv1.setText(b.getString("a1"));
-        atv2.setText(b.getString("a2"));
 
 
 

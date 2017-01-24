@@ -35,8 +35,8 @@ public class SynAnt extends AppCompatActivity {
 
 
 
-        stv1.setText(b.getString("s1"));
-        stv2.setText(b.getString("s2"));
+        stv1.setText("1)"+" "+ b.getString("s1"));
+        stv2.setText("2)"+" "+ b.getString("s2"));
 
 
 

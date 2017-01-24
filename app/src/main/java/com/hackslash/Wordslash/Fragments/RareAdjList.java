@@ -131,7 +131,7 @@ public abstract class RareAdjList extends Fragment{
                     public void onClick(View v) {
 
 
-                        Toast.makeText(getActivity(),"wait for details",Toast.LENGTH_SHORT).show();
+                       // Toast.makeText(getActivity(),"wait for details",Toast.LENGTH_SHORT).show();
 
 
                         /*
@@ -178,7 +178,7 @@ public abstract class RareAdjList extends Fragment{
                                     @Override
                                     public void onDataChange(DataSnapshot dataSnapshot) {
                                         Antonyms antonyms = dataSnapshot.getValue(Antonyms.class);
-                                        Toast.makeText(getActivity(), antonyms.a1 + " & " + antonyms.a2, Toast.LENGTH_SHORT).show();
+
                                         Intent intent = new Intent(getActivity(), SynAnt2.class);
                                         Bundle extras = new Bundle();
                                         String stat="ant";
@@ -206,7 +206,7 @@ public abstract class RareAdjList extends Fragment{
                                     @Override
                                     public void onDataChange(DataSnapshot dataSnapshot) {
                                         Synonyms synonyms = dataSnapshot.getValue(Synonyms.class);
-                                        Toast.makeText(getActivity(), synonyms.s1 + " & " + synonyms.s2, Toast.LENGTH_SHORT).show();
+
                                         Intent intent = new Intent(getActivity(), SynAnt2.class);
                                         Bundle extras = new Bundle();
                                         String stat="syn";

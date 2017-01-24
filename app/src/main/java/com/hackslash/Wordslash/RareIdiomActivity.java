@@ -86,7 +86,7 @@ public class RareIdiomActivity extends BaseActivity implements NavigationView.On
         TextView mail=(TextView)header.findViewById(R.id.mail);
 
         name.setText(mAuth.getCurrentUser().getDisplayName());
-        mail.setText(mAuth.getCurrentUser().getEmail());
+        mail.setText("Browse our categories!");
 
 
         /*
@@ -164,14 +164,9 @@ public class RareIdiomActivity extends BaseActivity implements NavigationView.On
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id=item.getItemId();
-        if(id==R.id.action_logout){
-            return true;
 
-
-        }
-        else {
             return super.onOptionsItemSelected(item);
-        }
+
 
     }
 

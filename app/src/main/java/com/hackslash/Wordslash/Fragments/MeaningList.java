@@ -176,7 +176,7 @@ public abstract class MeaningList extends Fragment {
                                     @Override
                                     public void onDataChange(DataSnapshot dataSnapshot) {
                                         Synonyms synonyms = dataSnapshot.getValue(Synonyms.class);
-                                        Toast.makeText(getActivity(), synonyms.s1 + " & " + synonyms.s2, Toast.LENGTH_SHORT).show();
+                                       // Toast.makeText(getActivity(), synonyms.s1 + " & " + synonyms.s2, Toast.LENGTH_SHORT).show();
                                         Intent intent = new Intent(getActivity(), SynAnt.class);
                                         Bundle extras = new Bundle();
                                         extras.putString("s1", synonyms.s1);

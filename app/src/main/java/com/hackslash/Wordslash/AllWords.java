@@ -128,9 +128,9 @@ public class AllWords extends BaseActivity implements NavigationView.OnNavigatio
                 .setStoreType(StoreType.GOOGLEPLAY) //default is Google, other option is Amazon
                 .setInstallDays(5) // default 10, 0 means install day.
                 .setLaunchTimes(5) // default 10
-                .setRemindInterval(2) // default 1 day.
+                .setRemindInterval(1) // default 1 day.
                 .setShowLaterButton(true) // default true.
-                .setDebug(true) // default false.
+                .setDebug(false) // default false.
                 .setCancelable(false) // default false.
                 .setOnClickButtonListener(new OnClickButtonListener() { // callback listener.
                     @Override
@@ -266,15 +266,9 @@ public class AllWords extends BaseActivity implements NavigationView.OnNavigatio
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id=item.getItemId();
-        if(id==R.id.action_logout){
 
-            return true;
-
-
-        }
-        else {
             return super.onOptionsItemSelected(item);
-        }
+
 
     }
 

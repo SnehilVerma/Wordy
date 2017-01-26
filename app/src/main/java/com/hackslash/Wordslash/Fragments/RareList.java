@@ -55,7 +55,7 @@ public abstract class RareList extends Fragment {
     private FirebaseRecyclerAdapter<RareNoun, NounHolder> mAdapter;
     private RecyclerView mRecycler;
     private LinearLayoutManager mManager;
-
+    static boolean called=false;
     public RareList() {
     }
 
@@ -68,6 +68,12 @@ public abstract class RareList extends Fragment {
         super.onCreateView(inflater, container, savedInstanceState);
         View rootView = inflater.inflate(R.layout.activity_all_rare, container, false);
 
+        /*
+        if(!called) {
+
+            FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+            called=true;
+        }*/
         // [START create_database_reference]
         mDatabase = FirebaseDatabase.getInstance().getReference();
 

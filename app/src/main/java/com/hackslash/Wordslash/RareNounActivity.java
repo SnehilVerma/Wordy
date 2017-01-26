@@ -186,8 +186,9 @@ public class RareNounActivity extends BaseActivity implements NavigationView.OnN
         if (id == R.id.nav_logout) {
             LoginManager.getInstance().logOut();
             mAuth.signOut();
+
             Intent intent = new Intent(RareNounActivity.this,MainActivity.class);
-            intent .setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
 
 

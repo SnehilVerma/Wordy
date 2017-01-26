@@ -52,6 +52,7 @@ public class MainActivity extends BaseActivity
     GoogleApiClient mGoogleApiClient;
     int RC_SIGN_IN=1;
     private static final String TAG = MainActivity.class.getName();
+
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
@@ -73,6 +74,7 @@ public class MainActivity extends BaseActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
 
 
         FacebookSdk.sdkInitialize(getApplicationContext());
@@ -141,6 +143,7 @@ public class MainActivity extends BaseActivity
 
 
         mAuth = FirebaseAuth.getInstance();
+
         mDatabase= FirebaseDatabase.getInstance().getReference();
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {

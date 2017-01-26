@@ -42,6 +42,7 @@ public abstract class IdiomList extends Fragment{
     private FirebaseRecyclerAdapter<Idiom, IdiomHolder> mAdapter;
     private RecyclerView mRecycler;
     private LinearLayoutManager mManager;
+    static boolean called=false;
 
     public IdiomList() {
     }
@@ -53,7 +54,13 @@ public abstract class IdiomList extends Fragment{
         View rootView = inflater.inflate(R.layout.activity_all_idioms, container, false);
 
 
+        /*
 
+        if(!called) {
+
+            FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+            called=true;
+        }*/
 
         // [START create_database_reference]
         mDatabase = FirebaseDatabase.getInstance().getReference();

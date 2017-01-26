@@ -28,6 +28,7 @@ import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.hackslash.Wordslash.Fragments.BasicList;
@@ -99,6 +100,7 @@ public class AllWords extends BaseActivity implements NavigationView.OnNavigatio
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all);
+
 
 
         mAuth=FirebaseAuth.getInstance();
@@ -281,11 +283,12 @@ public class AllWords extends BaseActivity implements NavigationView.OnNavigatio
          if (id == R.id.nav_logout) {
 
             LoginManager.getInstance().logOut();
-            LoginManager.getInstance().logOut();
             mAuth.signOut();
+
             Intent intent = new Intent(AllWords.this,MainActivity.class);
-            intent .setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
+
 
 
         } else if (id == R.id.nav_fav) {

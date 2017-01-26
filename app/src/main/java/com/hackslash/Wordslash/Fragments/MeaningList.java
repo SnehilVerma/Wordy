@@ -45,11 +45,12 @@ public abstract class MeaningList extends Fragment {
     private static final String TAG = "MeaningListFragment";
 
     private DatabaseReference mDatabase;
-    private DatabaseReference starBase;
+
     private FirebaseAuth auth;
     private FirebaseRecyclerAdapter<Meaning, WordHolder> mAdapter;
     private RecyclerView mRecycler;
     private LinearLayoutManager mManager;
+    static boolean called=false;
 
     public MeaningList() {
     }
@@ -60,12 +61,17 @@ public abstract class MeaningList extends Fragment {
         super.onCreateView(inflater, container, savedInstanceState);
         View rootView = inflater.inflate(R.layout.activity_all_mean, container, false);
 
+        /*
 
+        if(!called) {
 
-
+            FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+            called=true;
+        }*/
         // [START create_database_reference]
         mDatabase = FirebaseDatabase.getInstance().getReference();
         // [END create_database_reference]
+
 
 
         auth=FirebaseAuth.getInstance();

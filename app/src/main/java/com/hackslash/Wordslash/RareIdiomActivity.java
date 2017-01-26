@@ -179,8 +179,9 @@ public class RareIdiomActivity extends BaseActivity implements NavigationView.On
         if (id == R.id.nav_logout) {
             LoginManager.getInstance().logOut();
             mAuth.signOut();
+
             Intent intent = new Intent(RareIdiomActivity.this,MainActivity.class);
-            intent .setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
 
 

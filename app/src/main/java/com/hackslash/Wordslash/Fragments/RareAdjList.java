@@ -55,6 +55,7 @@ public abstract class RareAdjList extends Fragment{
     private FirebaseRecyclerAdapter<Adjective, AdjHolder> mAdapter;
     private RecyclerView mRecycler;
     private LinearLayoutManager mManager;
+    static boolean called=false;
 
     public RareAdjList() {
     }
@@ -69,6 +70,13 @@ public abstract class RareAdjList extends Fragment{
         View rootView = inflater.inflate(R.layout.activity_all_adj, container, false);
 
         // [START create_database_reference]
+        /*
+        if(!called) {
+
+            FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+            called=true;
+        }
+        */
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
 
